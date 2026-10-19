@@ -1,4 +1,4 @@
-# Kundserviceportalen
+# Kundserviceportalen Grupp 7
 
 Här samlar ni teamets arbete med Kundserviceportalen i kursen AI Native Development. Ni väljer teknik och bygger en mindre fullstacklösning med AI-stöd. Använd bara påhittade kunduppgifter.
 
