@@ -163,10 +163,12 @@ clearer handover). Do not claim improvement without the comparison.
 
 ## 8. Logging
 
-Every session that produces code, tests or a decision gets one entry in
-[ai-log.md](ai-log.md) the same day. Log the brief, not the full chat. The entry
-needs: task/AC, prompt or prompt file, boundaries, what the agent produced, what
-you accepted/changed/rejected and why, how you verified it, and the commit/PR.
+Every session that produces code, tests or a decision gets one entry in your own
+file under [ai-log.md](ai-log.md) the same day. Log the brief, not the full chat.
+The entry needs: task/AC, prompt or prompt file, boundaries, what the agent
+produced, what you accepted/changed/rejected and why, how you verified it, and the
+commit/PR. Reasoning too long for an entry goes in [`sessions/`](sessions/README.md)
+and is linked from the entry.
 
 The log is the raw material for the individual report. An empty log in week 8 makes
 an honest report impossible.

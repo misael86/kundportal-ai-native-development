@@ -14,7 +14,7 @@ Fill this in on day 1. These codes are used everywhere else.
 
 | Code | Name | GitHub | Owns (short) | Reviews |
 |---|---|---|---|---|
-| A | _TODO_ | _TODO_ | Create + validation, specification, AI instructions | B |
+| A | Misael Berrios Salas | @misael86 | Create + validation, specification, AI instructions | B |
 | B | _TODO_ | _TODO_ | List + detail + search, UI kit, accessibility | A |
 | C | _TODO_ | _TODO_ | Status workflow + history, data model, seed | D |
 | D | _TODO_ | _TODO_ | Internal notes, error UX, test harness, CI, verification | C |

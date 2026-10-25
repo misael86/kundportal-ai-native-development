@@ -16,11 +16,12 @@ readable without the git history.
 | 7 | [traceability.md](traceability.md) | AC → issue → PR → test → evidence | D |
 | 8 | [backlog.md](backlog.md) | Issue breakdown, milestones, labels | A |
 | 9 | [weekly/](weekly/) | One status file per week (week 5–8) | rotating |
-| 10 | [ai-log.md](ai-log.md) | Per-person log of agent sessions | everyone |
-| 11 | [reviews.md](reviews.md) | Who reviewed whom, what was checked, what changed | everyone |
-| 12 | [runbook.md](runbook.md) | How someone else runs, tests and demos | D |
-| 13 | [../prompts/](../prompts/) | Versioned prompts for TDD, implementation and review | everyone |
-| 14 | [ai-tooling.md](ai-tooling.md) | How the rules reach Copilot, Claude, Gemini, Cursor, OpenCode and others | A |
+| 10 | [ai-log.md](ai-log.md) | Per-person log of agent sessions, one file each | everyone |
+| 11 | [sessions/](sessions/README.md) | Decision trails for individual sessions | session author |
+| 12 | [reviews.md](reviews.md) | Who reviewed whom, what was checked, what changed | everyone |
+| 13 | [runbook.md](runbook.md) | How someone else runs, tests and demos | D |
+| 14 | [../prompts/](../prompts/) | Versioned prompts for TDD, implementation and review | everyone |
+| 15 | [ai-tooling.md](ai-tooling.md) | How the rules reach Copilot, Claude, Gemini, Cursor, OpenCode and others | A |
 
 ## Rules for this folder
 
