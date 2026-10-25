@@ -19,7 +19,7 @@ All gemensam dokumentation finns i [`docs/`](docs/README.md).
 | [Beslut](docs/decisions/README.md) | ADR:er med alternativ, beslut och konsekvenser |
 | [Feature-briefs](docs/features/README.md) | Krav per feature: omfattning, kontrakt, tester, verifiering |
 | [AI-arbetssätt](docs/ai-workflow.md) | Hur vi styr AI, gränser, granskning, återkommande moment |
-| [AI-verktyg](docs/ai-tooling.md) | Samma regler för Copilot, Claude, Gemini, Cursor, OpenCode med flera |
+| [AI-verktyg](docs/ai-tooling.md) | En regelfil för alla assistenter; så lägger du till en adapter |
 | [Verifieringsplan](docs/verification-plan.md) | Testnivåer, testmatris, resultat, begränsningar |
 | [Spårbarhet](docs/traceability.md) | AC → issue → PR → test → bevis |
 | [Backlog](docs/backlog.md) | Issues, milstolpar och beroenden |

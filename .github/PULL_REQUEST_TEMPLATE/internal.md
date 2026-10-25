@@ -30,8 +30,7 @@ npm run check
 - [ ] No changes outside the area (`git diff --stat`)
 - [ ] Docs updated if behaviour or decisions changed
 - [ ] Text is short: no filler, no repetition, lists over paragraphs
-- [ ] If a rule changed, `AGENTS.md` was updated and the tool adapters still
-      point at it (`docs/ai-tooling.md`)
+- [ ] If a rule changed, `AGENTS.md` was updated and any adapter still points at it
 - [ ] `docs/ai-log.md` entry added
 - [ ] `docs/traceability.md` row updated
 - [ ] UI only: WCAG 2.2 AA checked — labels, visible focus, contrast, 24 × 24 px

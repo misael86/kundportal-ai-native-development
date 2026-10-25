@@ -21,7 +21,7 @@ readable without the git history.
 | 12 | [reviews.md](reviews.md) | Who reviewed whom, what was checked, what changed | everyone |
 | 13 | [runbook.md](runbook.md) | How someone else runs, tests and demos | D |
 | 14 | [../prompts/](../prompts/) | Versioned prompts for TDD, implementation and review | everyone |
-| 15 | [ai-tooling.md](ai-tooling.md) | How the rules reach Copilot, Claude, Gemini, Cursor, OpenCode and others | A |
+| 15 | [ai-tooling.md](ai-tooling.md) | One rule file, and how to add an adapter for a tool that needs one | A |
 
 ## Rules for this folder
 

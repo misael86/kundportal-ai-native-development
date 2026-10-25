@@ -11,7 +11,8 @@ How we work here. [AGENTS.md](AGENTS.md) has the same rules written for AI agent
 - You have read [docs/specification.md](docs/specification.md) and know your area
   in [docs/project-plan.md](docs/project-plan.md#5-ownership-matrix).
 - Any AI assistant is allowed. [AGENTS.md](AGENTS.md) is canonical;
-  [docs/ai-tooling.md](docs/ai-tooling.md) lists the file each tool reads.
+  [docs/ai-tooling.md](docs/ai-tooling.md) explains how to point a tool that does
+  not read it.
 
 Setup (available after BASE-01):
 

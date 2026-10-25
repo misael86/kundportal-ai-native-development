@@ -19,8 +19,8 @@ Mapping: [project-plan.md §1](../project-plan.md#1-team).
   alternatives, a base gate that blocks feature work, one canonical `AGENTS.md`
   with pointer adapters, and a per-feature brief template.
 - **What I accepted:** the document tree, the AC numbering, `AGENTS.md` as the
-  single source of truth with thin adapters, and the brief sections (contract,
-  tests, out of scope, verification).
+  single source of truth, and the brief sections (contract, tests, out of scope,
+  verification).
 - **What I changed:**
   - rewrote all 35 existing docs for length, 27,329 → 26,219 words, with no AC
     row, issue number, code span or URL lost (checked against a pre-rewrite copy)
@@ -31,8 +31,12 @@ Mapping: [project-plan.md §1](../project-plan.md#1-team).
   - backticked `#<number>` placeholders so Markdown does not read them as headings
   - removed AC-06 from `CREATE-02`'s scope and test table: AC-06 belongs to
     `CREATE-01`, so the brief claimed work it does not own
+  - removed the five tool adapters (`CLAUDE.md`, `GEMINI.md`,
+    `.github/copilot-instructions.md`, `.cursor/`, `.windsurf/`) and replaced the
+    matrix with instructions for adding one
 - **What I rejected:**
-  - a full copy of the rules per tool — five copies drift; pointers instead
+  - a full copy of the rules per tool — five copies drift; pointers instead, and
+    in the end no adapters at all until someone needs one
   - a second docs index in the root `README.md` — duplication of `docs/README.md`
   - restating the writing rule in every file — it lives in `AGENTS.md` §5 and the
     other files link to it

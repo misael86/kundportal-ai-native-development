@@ -209,10 +209,8 @@ Nobody has to use the same assistant. The rules are tool-agnostic:
 
 - **[AGENTS.md](../AGENTS.md) is canonical.** OpenCode, Codex and any tool that
   follows the `AGENTS.md` convention read it directly.
-- **Thin adapters** point the others at it: `CLAUDE.md` (Claude Code),
-  `GEMINI.md` (Gemini CLI), `.github/copilot-instructions.md` (GitHub Copilot),
-  `.cursor/rules/project.mdc` (Cursor), `.windsurf/rules/project.md` (Windsurf).
-  Each carries a short summary of the non-negotiables, not a copy.
+- **No adapter ships by default.** A tool that looks for its own file gets one when
+  a teammate needs it; [ai-tooling.md](ai-tooling.md) has the steps and a template.
 - **Prompts are plain Markdown.** Copy a block from [`prompts/`](../prompts/) into
   any chat. No tool-specific syntax.
 - **If an adapter and `AGENTS.md` disagree, `AGENTS.md` wins.** Change it first,

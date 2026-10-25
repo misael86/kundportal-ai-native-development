@@ -3,10 +3,10 @@
 Applies to every AI assistant used here: OpenCode, Copilot, Cursor, Claude,
 Gemini, ChatGPT with repo context, and others. Reviewed like code.
 
-**This file is the single source of truth.** Tool adapters (`CLAUDE.md`,
-`GEMINI.md`, `.github/copilot-instructions.md`, `.cursor/rules/`,
-`.windsurf/rules/`) are short pointers. If an adapter disagrees, this file wins.
-Tool matrix and how to add an assistant: [docs/ai-tooling.md](docs/ai-tooling.md).
+**This file is the single source of truth.** Tools that follow the `AGENTS.md`
+convention read it directly. For a tool that looks for its own file, add an adapter:
+[docs/ai-tooling.md](docs/ai-tooling.md) has the steps and a template. Do not copy
+the rules into a second file.
 
 Read [docs/specification.md](docs/specification.md) before implementing. The spec
 is the source of truth; this file explains how to work inside it.
