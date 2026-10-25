@@ -1,0 +1,54 @@
+# CODEOWNERS
+#
+# Fill in the real GitHub handles before relying on this file.
+# Replace every @TODO-* below, then commit. GitHub only enforces this if branch
+# protection requires code owner review.
+#
+# Known accounts at the start of week 5: @misael86 (owner), @carterleeintel.
+# Map the track letters A–D to handles at the kickoff, then replace @TODO-*.
+#
+# The point is to make the ownership in docs/project-plan.md §5 visible in every
+# PR, not to lock people out.
+
+# Fallback owner for anything not listed below.
+*                       @misael86
+
+# Create slice — A
+/src/features/cases/create/    @TODO-a
+/src/app/cases/new/            @TODO-a
+/docs/specification.md         @TODO-a
+/AGENTS.md                     @TODO-a
+/prompts/                      @TODO-a
+/CLAUDE.md                     @TODO-a
+/GEMINI.md                     @TODO-a
+/.github/copilot-instructions.md @TODO-a
+/.cursor/                      @TODO-a
+/.windsurf/                    @TODO-a
+/docs/ai-tooling.md            @TODO-a
+/docs/ai-workflow.md           @TODO-a
+
+# Query slice and UI — B
+/src/features/cases/query/     @TODO-b
+/src/app/cases/                @TODO-b
+/src/components/ui/            @TODO-b
+/src/app/layout.tsx            @TODO-b
+/src/app/globals.css           @TODO-b
+/docs/decisions/ADR-004-work-split.md @TODO-b
+
+# Workflow and data — C
+/src/features/cases/workflow/  @TODO-c
+/prisma/                       @TODO-c
+/src/lib/db.ts                 @TODO-c
+/src/lib/types.ts              @TODO-c
+
+# Notes, platform, tests, CI — D
+/src/features/notes/           @TODO-d
+/src/lib/errors.ts             @TODO-d
+/src/lib/http.ts               @TODO-d
+/src/test/                     @TODO-d
+/src/app/api/                  @TODO-d
+/package.json                  @TODO-d
+/package-lock.json             @TODO-d
+/.github/workflows/            @TODO-d
+/docs/verification-plan.md     @TODO-d
+/docs/traceability.md          @TODO-d

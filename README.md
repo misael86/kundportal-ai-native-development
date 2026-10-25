@@ -1,26 +1,62 @@
 # Kundserviceportalen Grupp 7
 
-Här samlar ni teamets arbete med Kundserviceportalen i kursen AI Native Development. Ni väljer teknik och bygger en mindre fullstacklösning med AI-stöd. Använd bara påhittade kunduppgifter.
+Teamets arbete med Kundserviceportalen i kursen AI Native Development: en mindre
+fullstacklösning byggd med AI-stöd. Använd bara påhittade kunduppgifter.
 
-**Uppgift, betygskriterier, veckoförväntningar och deadline finns under Kursexamination i Disco.** Börja där och återvänd dit under arbetet.
+**Uppgift, betygskriterier, veckoförväntningar och deadline finns under
+Kursexamination i Disco.** Börja där och återvänd dit under arbetet.
 [Länk till Disco](https://technigo.disco.co/p/fall-2026-ai-native-development/collection/Q29sbGVjdGlvbjozNzg3Ng==?u=25dab1f8-7abb-463e-a19e-d379efb7caae&drawerTab=comments)
+
+## Projektets dokumentation
+
+Lokal fullstacklösning med **Next.js (App Router) + TypeScript + Prisma + SQLite**.
+All gemensam dokumentation finns i [`docs/`](docs/README.md).
+
+| Dokument | Innehåll |
+|---|---|
+| [Projektplan](docs/project-plan.md) | Omfattning, milstolpar, ansvar, konfliktregler |
+| [Specifikation](docs/specification.md) | Datamodell, statusflöde, validering, API-kontrakt, AC |
+| [Beslut](docs/decisions/README.md) | ADR:er med alternativ, beslut och konsekvenser |
+| [Feature-briefs](docs/features/README.md) | Krav per feature: omfattning, kontrakt, tester, verifiering |
+| [AI-arbetssätt](docs/ai-workflow.md) | Hur vi styr AI, gränser, granskning, återkommande moment |
+| [AI-verktyg](docs/ai-tooling.md) | Samma regler för Copilot, Claude, Gemini, Cursor, OpenCode med flera |
+| [Verifieringsplan](docs/verification-plan.md) | Testnivåer, testmatris, resultat, begränsningar |
+| [Spårbarhet](docs/traceability.md) | AC → issue → PR → test → bevis |
+| [Backlog](docs/backlog.md) | Issues, milstolpar och beroenden |
+| [Veckostatus](docs/weekly/week-05.md) | Planerat, genomfört, verifierat, osäkert, nästa steg |
+| [Runbook](docs/runbook.md) | Så kör och demonstrerar någon annan lösningen |
+
+Branches, commits och granskning: [CONTRIBUTING.md](CONTRIBUTING.md).
+AI-agenter: [AGENTS.md](AGENTS.md).
+
+> Individuella redovisningar lämnas i Disco och ska **inte** läggas i detta
+> repository.
 
 ## Kom igång
 
-Projektarbetet börjar vecka 5. Ni får börja frivilligt vecka 4; den veckans fristående kodövning finns kvar.
+Projektarbetet börjar vecka 5. Frivillig start vecka 4; den veckans fristående
+kodövning finns kvar.
 
 1. Läs uppgiften och veckans förväntningar i Disco.
-2. **En person i teamet skapar en publik fork** från [kursens repository](https://github.com/Technigo/kundportal-ai-native-development) på sitt GitHub-konto. Den personen bjuder in övriga teammedlemmar som **collaborators** via **Settings -> Collaborators -> Add people**. Alla accepterar sin inbjudan och kontrollerar att de kan pusha till teamets fork. Vi kan läsa koden och underlagen i den publika forken utan en separat inbjudan.
-3. Klona teamets fork till era datorer.
-4. Gör en första förändring: beskriv teamet och er första plan i er dokumentation. Committa och pusha förändringen till `main` i teamets fork. Körbar kod behövs inte för att öppna PR:n.
+2. **En person skapar en publik fork** från
+   [kursens repository](https://github.com/Technigo/kundportal-ai-native-development)
+   och bjuder in övriga som **collaborators** via **Settings → Collaborators → Add
+   people**. Alla accepterar och kontrollerar att de kan pusha. Koden och underlagen
+   är läsbara i den publika forken utan separat inbjudan.
+3. Klona teamets fork.
+4. Gör en första förändring: beskriv teamet och första planen i dokumentationen.
+   Committa och pusha till `main` i forken. Körbar kod krävs inte för att öppna
+   PR:n.
 5. Öppna teamets löpande PR enligt nästa avsnitt.
-6. Fortsätt med projektarbetet enligt vecka 5 i Disco.
+6. Fortsätt enligt vecka 5 i Disco.
 
-Ni arbetar i **samma fork** under projektet. Det räcker att en person skapar den. Se [GitHubs instruktion för att bjuda in collaborators](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository) om ni behöver hjälp.
+Ni arbetar i **samma fork** under projektet; det räcker att en person skapar den.
+[Hjälp med collaborators](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository).
 
 ## Branches och pull requests
 
-Teamets löpande PR går **från `main` i teamets fork till `main` i kursens repository**.
+Teamets löpande PR går **från `main` i teamets fork till `main` i kursens
+repository**.
 
 | Val i GitHub | Ange |
 |---|---|
@@ -29,24 +65,38 @@ Teamets löpande PR går **från `main` i teamets fork till `main` i kursens rep
 | Head repository | Teamets fork |
 | Compare | `main` |
 
-Välj **compare across forks** om båda repositories inte visas. Använd teamets namn i PR-rubriken. Kopiera innehållet i [PR-mallen för teamets projekt](.github/PULL_REQUEST_TEMPLATE/teamets-projekt.md) till beskrivningen och fyll i det som finns vid starten. Resten växer fram under projektet.
+Välj **compare across forks** om båda repositories inte visas. Använd teamets namn i
+PR-rubriken. Kopiera innehållet i
+[PR-mallen för teamets projekt](.github/PULL_REQUEST_TEMPLATE/teamets-projekt.md)
+och fyll i det som finns vid starten; resten växer fram.
 
-Håll samma PR öppen under projektperioden. Den används för uppföljning och inlämning och ska inte mergas till kursens repository under arbetet. Nya commits på teamets `main` syns i samma PR.
+Håll samma PR öppen under projektperioden. Den används för uppföljning och inlämning
+och ska inte mergas till kursens repository. Nya commits på teamets `main` syns i
+samma PR.
 
-Inom teamets fork kan ni använda separata branches för mindre uppgifter och granska dem i interna PR:er till **teamets egen `main`**. Kontrollera vilket repository som är mål innan ni öppnar en intern PR. Gör granskningen spårbar: vem granskade, vad kontrollerades och vad ledde återkopplingen till?
+Inom forken: separata branches för mindre uppgifter, granskade i interna PR:er till
+**teamets egen `main`**. Kontrollera målet innan du öppnar en intern PR. Gör
+granskningen spårbar: vem granskade, vad kontrollerades, vad ledde återkopplingen
+till?
 
-[GitHubs guide för PR från en fork](https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request-from-a-fork) beskriver valen i gränssnittet.
+[GitHubs guide för PR från en fork](https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request-from-a-fork).
 
 ## Er dokumentation
 
-Ni utformar själva dokumentationen och styrningen av era AI-verktyg utifrån uppgiften i Disco. Länka till teamets gemensamma underlag från den löpande PR:n, så att vi kan följa ert arbete.
+Utforma dokumentationen och styrningen av AI-verktygen utifrån uppgiften i Disco.
+Länka underlagen från den löpande PR:n så att arbetet går att följa.
 
 ## Slutversion och inlämning
 
-När gruppens kod, tester och gemensamma dokumentation är pushade kopierar ni länken till den commit som innehåller slutversionen. Lägg länken överst i teamets löpande PR-beskrivning under **Slutversion för examination**. Kontrollera att länkarna till underlagen visar den inlämnade versionen i teamets fork.
+När kod, tester och dokumentation är pushade: kopiera länken till commiten med
+slutversionen och lägg den överst i PR-beskrivningen under **Slutversion för
+examination**. Kontrollera att länkarna visar den inlämnade versionen i forken.
 
-Varje student lämnar sin individuella redovisning som en **Markdown-fil (.md) i sin egen inlämning i Disco**. Märk dokumentet med ditt namn och länka till teamets fork, löpande PR, markerade slutversion och det arbete som visar ditt eget bidrag.
+Varje student lämnar sin individuella redovisning som en **Markdown-fil (.md)** i
+sin egen inlämning i Disco. Märk den med ditt namn och länka till teamets fork,
+löpande PR, markerad slutversion och det arbete som visar ditt bidrag.
 
-Den individuella redovisningen ska inte läggas i teamets repository eller länkas från teamets PR. Du behöver inte dela dokumentet med dina klasskamrater. Gruppens kod, tester och gemensamma dokumentation finns fortsatt på GitHub.
+Redovisningen ska inte läggas i teamets repository eller länkas från PR:n. Du
+behöver inte dela den med klasskamraterna.
 
-Följ den aktuella instruktionen och deadlinen i Disco.
+Följ aktuell instruktion och deadline i Disco.
