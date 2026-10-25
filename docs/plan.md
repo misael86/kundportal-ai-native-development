@@ -28,6 +28,7 @@ Planera en mobilanpassad Next.js-applikation i TypeScript för att skapa, visa, 
      - `TextInput`, `Textarea` och `Select` med etikett-, hjälp- och felvisning.
      - `StatusBadge` som visar status med text, inte bara färg.
      - `Notification` för bekräftelser och fel, till exempel när ärenden skapas eller ändras.
+   - Använd `lucide-react` för ikoner. Ikoner är dekorativa när intilliggande text förmedlar samma sak; ikonknappar utan synlig text ska ha ett tillgängligt namn.
    - Ärendefeatures:
      - `IssueForm` för att skapa och redigera ärenden.
      - `IssueList` för lista, filtrering och tomt läge.
