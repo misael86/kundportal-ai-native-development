@@ -8,6 +8,7 @@ Planera en mobilanpassad Next.js-applikation i TypeScript för att skapa, visa, 
 
 1. **Grund och arkitektur**
    - Next.js App Router och TypeScript.
+   - pnpm som pakethanterare och låsfilskälla.
    - Feature-driven struktur: varje domänfunktion äger sin UI, logik och tester.
    - Gemensamma, återanvändbara baskomponenter i en separat shared-mapp.
    - SQLite för lokal, beständig data.

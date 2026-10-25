@@ -16,10 +16,10 @@ Lokal demoapp för att registrera, visa och hantera kundärenden. Projektet bygg
 
 När appens grund är på plats:
 
-1. Installera den Node.js-version som anges i projektets konfiguration.
+1. Installera den Node.js-version och pnpm-version som anges i projektets konfiguration.
 2. Klona teamets fork och gå till projektmappen.
-3. Installera beroenden med `npm ci`.
-4. Starta utvecklingsservern med `npm run dev`.
+3. Installera beroenden med `pnpm install --frozen-lockfile`.
+4. Starta utvecklingsservern med `pnpm dev`.
 5. Öppna adressen som visas i terminalen, vanligtvis `http://localhost:3000`.
 
 Appen är avsedd för lokal körning av teamet och läraren. Den ska inte driftsättas eller publiceras.
@@ -40,12 +40,12 @@ Följande kommandon är planerade. Exakta scripts fastställs i `package.json` n
 
 | Kontroll | Planerat kommando |
 |---|---|
-| Enhets-, komponent- och integrationstester | `npm test` |
-| Täckningsrapport | `npm run test:coverage` |
-| End-to-end-tester | `npm run test:e2e` |
-| ESLint | `npm run lint` |
-| TypeScript | `npm run typecheck` |
-| Produktionsbuild | `npm run build` |
+| Enhets-, komponent- och integrationstester | `pnpm test` |
+| Täckningsrapport | `pnpm test:coverage` |
+| End-to-end-tester | `pnpm test:e2e` |
+| ESLint | `pnpm lint` |
+| TypeScript | `pnpm typecheck` |
+| Produktionsbuild | `pnpm build` |
 
 Målet är 100 % line-, statement-, function- och branch-täckning av testbar produktionskod. Om 100 % inte är rimligt ska undantag och beslutad nivå dokumenteras.
 

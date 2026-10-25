@@ -2,6 +2,7 @@
 
 - Svara kort och tydligt på svenska; föredra punktlistor och undvik upprepningar.
 - Projektet är en lokal Next.js-app med TypeScript och SQLite för lärardemo. Den ska inte publiceras och har ingen inloggning i första versionen.
+- Använd pnpm för installation, scripts och låsfil; skriv inte npm-kommandon i projektguider.
 - Använd endast fiktiva kund- och ärendeuppgifter.
 - Följ feature-driven struktur: featurekod i `src/features/<feature>/`, återanvändbar UI i `src/shared/ui/`, gemensamma baskrav i `src/shared/`.
 - Varje komponent och sida har sin kravspecifikation bredvid koden som `<namn>.spec.md`. Följ [spec-instruktionen](./instructions/component-specs.instructions.md).
