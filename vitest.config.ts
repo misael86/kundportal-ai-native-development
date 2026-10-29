@@ -12,8 +12,16 @@ export default defineConfig({
     unstubGlobals: true,
     coverage: {
       provider: "v8",
-      include: ["src/shared/ui/**/*.{ts,tsx}"],
-      exclude: ["**/*.stories.tsx", "**/*.spec.md", "**/*.test.tsx"],
+      include: [
+        "src/shared/ui/**/*.{ts,tsx}",
+        "src/features/issues/**/*.{ts,tsx}",
+      ],
+      exclude: [
+        "**/*.stories.tsx",
+        "**/*.spec.md",
+        "**/*.test.tsx",
+        "src/features/issues/stories/**",
+      ],
     },
   },
 });

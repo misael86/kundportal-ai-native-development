@@ -24,7 +24,7 @@ Lokal demoapp för att registrera, visa och hantera kundärenden. Projektet bygg
 5. Öppna adressen som visas i terminalen, vanligtvis `http://localhost:3000` respektive `http://localhost:6006`.
 
 Appen är avsedd för lokal körning av teamet och läraren. Den ska inte driftsättas eller publiceras.
-Storybook visar delade komponenter med tema-väljaren i verktygsfältet. Appens färgtema följer systeminställningen tills ett manuellt val sparas i en cookie.
+Storybook visar delade UI-komponenter under `Shared/` och ärendefeature-komponenter under `Issues/`; ärendekomponenterna är inte delade komponenter. Använd verktygsfältets temaväljare för att granska båda temana. Appens färgtema följer systeminställningen tills ett manuellt val sparas i en cookie.
 
 ## SQLite och demodata
 

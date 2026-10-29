@@ -1,7 +1,7 @@
 # IssueDetail
 
 **Typ:** ärendefeature-komponent
-**Storybook:** valfritt; användarflödet verifieras med feature-tester
+**Storybook:** ja; exempel visar detaljvy, statusändring och fel.
 
 ## Krav — funktionella (K)
 

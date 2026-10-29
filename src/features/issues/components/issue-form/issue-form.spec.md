@@ -1,7 +1,7 @@
 # IssueForm
 
 **Typ:** ärendefeature-komponent
-**Storybook:** valfritt; funktion verifieras främst med automatiserade tester
+**Storybook:** ja; exempel visar skapa, redigera, valideringsfel och sparfel.
 
 ## Krav — funktionella (K)
 

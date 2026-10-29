@@ -1,7 +1,7 @@
 # IssueList
 
 **Typ:** ärendefeature-komponent
-**Storybook:** valfritt; tillstånd verifieras främst med feature-tester
+**Storybook:** ja; exempel visar innehåll, laddning, tomt läge, sökning utan träff och fel.
 
 ## Krav — funktionella (K)
 
