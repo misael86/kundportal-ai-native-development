@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
-import { ThemeSwitcher } from "@/shared/ui/theme-switcher/theme-switcher";
-import { getThemePreference } from "@/shared/ui/theme-switcher/theme";
+import { ThemePreferenceControl } from "./theme-preference-control";
+import { getThemePreference } from "@/shared/theme";
 import styles from "./page.module.css";
 
 export default async function HomePage() {
@@ -18,7 +18,7 @@ export default async function HomePage() {
         <a className={styles.storybookLink} href="http://localhost:6006">
           Öppna Storybook
         </a>
-        <ThemeSwitcher initialTheme={theme} />
+        <ThemePreferenceControl initialTheme={theme} />
       </section>
     </main>
   );

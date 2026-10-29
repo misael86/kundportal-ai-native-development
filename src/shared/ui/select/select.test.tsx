@@ -67,6 +67,7 @@ describe("Select", () => {
 
     expect(select).toHaveAttribute("aria-invalid", "true");
     expect(select).toHaveAccessibleDescription("Välj en kategori.");
+    expect(screen.getByRole("alert")).toHaveTextContent("Välj en kategori.");
   });
 
   it("keeps the original chevron shape at a larger size and further from the edge", () => {

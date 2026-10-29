@@ -68,7 +68,7 @@ export function Select({
         />
       </div>
       {error ? (
-        <p className={styles.error} id={errorId}>
+        <p className={styles.error} id={errorId} role="alert">
           {error}
         </p>
       ) : null}

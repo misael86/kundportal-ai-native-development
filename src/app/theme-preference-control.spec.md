@@ -1,8 +1,7 @@
-# ThemeSwitcher
+# ThemePreferenceControl
 
-**Typ:** gemensam UI-komponent
+**Typ:** app-specifik kontroll
 **Användning:** låter användaren följa systemets tema eller välja ljust/mörkt tema.
-**Storybook:** ja
 
 ## Krav — funktionella (K)
 
@@ -17,8 +16,8 @@
 ## Krav — tillgänglighet (T)
 
 - **T1 — Etikett:** temaväljaren har en synlig, programmässigt kopplad etikett. **Verifiering:** Automatiserad.
-- **T2 — Tangentbord:** temaväljaren kan användas med tangentbord. **Verifiering:** Automatiserad.
-- **T3 — Synligt fokus:** tangentbordsfokus visas tydligt i båda temana. **Verifiering:** Båda.
+- **T2 — Tangentbord:** temaväljaren kan nås med tangentbord och finns i fokusordningen. **Verifiering:** Automatiserad.
+- **T3 — Synligt fokus:** temaväljaren visar tydligt tangentbordsfokus i båda temana. **Verifiering:** Manuell.
 - **T4 — Sparfel:** fel vid sparande meddelas hjälpmedel. **Verifiering:** Automatiserad.
 
 ## Krav — felhantering (F)

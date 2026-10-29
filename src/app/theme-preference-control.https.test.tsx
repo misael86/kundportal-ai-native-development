@@ -4,16 +4,16 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it } from "vitest";
-import { ThemeSwitcher } from "./theme-switcher";
+import { ThemePreferenceControl } from "./theme-preference-control";
 
 afterEach(() => {
   document.cookie = "theme=; Max-Age=0; Path=/; SameSite=Lax";
 });
 
-describe("ThemeSwitcher over HTTPS", () => {
+describe("ThemePreferenceControl over HTTPS", () => {
   it("K3 saves a manual theme preference in the secure context", async () => {
     const user = userEvent.setup();
-    render(<ThemeSwitcher initialTheme="system" />);
+    render(<ThemePreferenceControl initialTheme="system" />);
 
     await user.selectOptions(
       screen.getByRole("combobox", { name: "Färgtema" }),

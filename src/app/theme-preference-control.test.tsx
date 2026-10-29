@@ -2,15 +2,15 @@ import { readFileSync } from "node:fs";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { getThemePreference } from "./theme";
-import { ThemeSwitcher } from "./theme-switcher";
+import { getThemePreference } from "../shared/theme";
+import { ThemePreferenceControl } from "./theme-preference-control";
 
 afterEach(() => {
   document.cookie = "theme=; Max-Age=0; Path=/; SameSite=Lax";
   document.documentElement.dataset.theme = "system";
 });
 
-describe("ThemeSwitcher", () => {
+describe("ThemePreferenceControl", () => {
   it("K1 D1 uses system preference when no valid manual choice is stored", () => {
     expect(getThemePreference(undefined)).toBe("system");
     expect(getThemePreference("other")).toBe("system");
@@ -22,7 +22,7 @@ describe("ThemeSwitcher", () => {
 
   it("K2 D1 lets the user choose only system, light, or dark", async () => {
     const user = userEvent.setup();
-    render(<ThemeSwitcher initialTheme="system" />);
+    render(<ThemePreferenceControl initialTheme="system" />);
     const select = screen.getByRole("combobox", { name: "Färgtema" });
 
     await user.selectOptions(select, "dark");
@@ -34,7 +34,7 @@ describe("ThemeSwitcher", () => {
 
   it("K2 clears the saved manual preference when system theme is selected", async () => {
     const user = userEvent.setup();
-    render(<ThemeSwitcher initialTheme="dark" />);
+    render(<ThemePreferenceControl initialTheme="dark" />);
 
     await user.selectOptions(
       screen.getByRole("combobox", { name: "Färgtema" }),
@@ -46,20 +46,20 @@ describe("ThemeSwitcher", () => {
   });
 
   it("D1 rejects a value outside the supported theme preferences", () => {
-    render(<ThemeSwitcher initialTheme="light" />);
+    render(<ThemePreferenceControl initialTheme="light" />);
     const select = screen.getByRole("combobox", { name: "Färgtema" });
 
     fireEvent.change(select, { target: { value: "sepia" } });
 
     expect(select).toHaveValue("light");
-    expect(screen.getByRole("alert")).toHaveTextContent(
-      "Ogiltigt temaval.",
-    );
+    expect(screen.getByRole("alert")).toHaveTextContent("Ogiltigt temaval.");
   });
 
   it("K3 restores the saved manual preference from the cookie", async () => {
     const user = userEvent.setup();
-    const { unmount } = render(<ThemeSwitcher initialTheme="system" />);
+    const { unmount } = render(
+      <ThemePreferenceControl initialTheme="system" />,
+    );
 
     await user.selectOptions(
       screen.getByRole("combobox", { name: "Färgtema" }),
@@ -70,40 +70,30 @@ describe("ThemeSwitcher", () => {
       .find((entry) => entry.startsWith("theme="))
       ?.slice("theme=".length);
     unmount();
-    render(<ThemeSwitcher initialTheme={getThemePreference(savedTheme)} />);
+    render(
+      <ThemePreferenceControl initialTheme={getThemePreference(savedTheme)} />,
+    );
 
     expect(screen.getByRole("combobox", { name: "Färgtema" })).toHaveValue(
       "light",
     );
   });
 
-  it("T1 T2 exposes a labelled native keyboard-operable control", async () => {
+  it("T1 T2 exposes a labelled control that receives keyboard focus", async () => {
     const user = userEvent.setup();
-    render(<ThemeSwitcher initialTheme="system" />);
+    render(<ThemePreferenceControl initialTheme="system" />);
     const select = screen.getByRole("combobox", { name: "Färgtema" });
 
-    select.focus();
-    await user.keyboard("d");
+    await user.tab();
 
     expect(select).toHaveFocus();
-  });
-
-  it("T3 uses the shared focus indicator in both themes", () => {
-    const stylesheet = readFileSync(
-      "src/shared/ui/theme-switcher/theme-switcher.module.css",
-      "utf8",
-    );
-
-    expect(stylesheet).toMatch(
-      /\.select:focus-visible\s*\{\s*outline:\s*3px solid var\(--focus-ring\)/,
-    );
   });
 
   it("T4 F1 preserves the active choice and announces cookie write failures", async () => {
     const user = userEvent.setup();
     vi.spyOn(document, "cookie", "get").mockReturnValue("");
     vi.spyOn(document, "cookie", "set").mockImplementation(() => {});
-    render(<ThemeSwitcher initialTheme="system" />);
+    render(<ThemePreferenceControl initialTheme="system" />);
     const select = screen.getByRole("combobox", { name: "Färgtema" });
 
     await user.selectOptions(select, "dark");

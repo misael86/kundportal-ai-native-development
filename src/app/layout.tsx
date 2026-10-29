@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
-import { getThemePreference } from "@/shared/ui/theme-switcher/theme";
+import { getThemePreference } from "@/shared/theme";
 import "./globals.css";
 
 export const metadata: Metadata = {
