@@ -10,6 +10,7 @@
 - Följ WCAG 2.2 AA och stöd små/stora skärmar. Automatiska kontroller ersätter inte manuell tangentbords- och skärmläsargranskning.
 - SQLite-demodata ska vara fiktiv och seedning idempotent. Tester använder isolerad temporär databas, aldrig lärarens demo-data.
 - Behåll kursens löpande fork-PR till kursrepot; interna PR:er går till teamets `main`.
+- När du genomför en implementation: efter godkända relevanta kontroller, skapa automatiskt en eller flera logiskt sammanhängande commits med Conventional Commit-meddelanden. Granska status och diff före staging samt staged diff före commit. Committera inte orelaterade eller befintliga ändringar du inte äger; fråga om omfattning eller ägarskap är oklart. Pusha aldrig utan uttrycklig begäran.
 - Spara veckorapporter i `docs/weekly-status/`; följ [veckostatusinstruktionen](./instructions/weekly-status.instructions.md) och bevara historiken.
 - Använd [assignment-intake](./skills/assignment-intake/SKILL.md) för substantiella uppdrag: grilla och invänta ett godkännande av en komplett exekveringsprompt som innehåller planen. Komprimera sedan prompten med [caveman-prompt-compact](./skills/caveman-prompt-compact/SKILL.md).
 - Avsluta substantiella uppgifter med ett tydligt ja/nej om återanvändbar kunskap hittades. Föreslå plats för eventuell kunskap och fråga innan något sparas eller AI-filer ändras.
