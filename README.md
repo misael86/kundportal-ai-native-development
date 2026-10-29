@@ -7,6 +7,7 @@ Lokal demoapp för att registrera, visa och hantera kundärenden. Projektet bygg
 ## Dokumentation
 
 - [Projektplan](docs/plan.md)
+- [Öppna beslut och uppföljning](docs/todo.md)
 - [Komponentspecifikationer](src/shared/ui/)
 - [Feature-specifikationer](src/features/issues/components/)
 - [Sidspecifikationer](src/app/)
@@ -34,7 +35,7 @@ Appen är avsedd för lokal körning av teamet och läraren. Den ska inte drifts
 
 ## Tester och kvalitetskontroller
 
-Följ TDD: skriv test före implementation. Varje krav-ID ska förekomma i minst ett automatiserat test; CI ska kontrollera att inget krav saknar test.
+Följ TDD: skriv test före implementation. Varje krav märks `Automatiserad`, `Manuell` eller `Båda` och verifieras enligt märkningen. CI kontrollerar tester och dokumenterad manuell verifiering.
 
 Följande kommandon är planerade. Exakta scripts fastställs i `package.json` när verktygen och testupplägget har lagts till:
 

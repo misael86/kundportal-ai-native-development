@@ -11,14 +11,18 @@ Planera en mobilanpassad Next.js-applikation i TypeScript för att skapa, visa, 
    - pnpm som pakethanterare och låsfilskälla.
    - Feature-driven struktur: varje domänfunktion äger sin UI, logik och tester.
    - Gemensamma, återanvändbara baskomponenter i en separat shared-mapp.
-   - SQLite för lokal, beständig data.
+   - `better-sqlite3` i ett server-only datalager för lokal, beständig data. Server Components läser via datalagret; Server Actions hanterar skrivningar. Databasåtkomst använder Node.js-runtime, inte Edge.
+   - Node.js `24.22.2` och pnpm 10. Lås exakt pnpm-patch i `packageManager`; lås verktygsversioner i manifest och lockfil.
    - Ingen inloggning i första versionen.
 
 2. **Ärendehantering**
    - Ärende med rubrik, beskrivning, kategori, prioritet, status och skapelsetid.
+   - Kategorier: Konto, Betalning, Leverans, Retur/reklamation och Övrigt. Prioriteter: Låg, Normal, Hög och Akut.
    - Skapa, lista, läsa och redigera ärenden.
+   - Redigera rubrik, beskrivning, kategori och prioritet. Ändra status separat på detaljsidan.
    - Statusar: Nytt, Pågående, Väntar på kund och Avslutat.
-   - Kompletterande tjänst: sök ärenden och filtrera på status.
+   - Sortera nyaste ärendet först (`created_at` fallande), med ID fallande vid lika skapelsetid.
+   - Sök i rubrik, beskrivning och kategori: trimma, delsträngsmatcha skiftlägesokänsligt inklusive svenska tecken; ignorera tom sökning och kombinera sökning med statusfilter.
    - Definiera tillåtna värden, validering, tomma listor och fel-/gränsfall i kravspecifikationerna.
 
 3. **Komponenter och kravspecifikationer**
@@ -70,24 +74,31 @@ Planera en mobilanpassad Next.js-applikation i TypeScript för att skapa, visa, 
    - Använd kravtyperna `K` (funktion), `D` (data/validering), `T` (tillgänglighet) och `F` (felhantering), grupperade i den ordningen i varje komponent-spec.
    - Krav-ID:n är lokala per komponent och kravtyp. Starta numreringen på 1 för varje typ i varje komponent. ID:n återanvänds alltså mellan komponenter, men får inte dupliceras inom samma komponent.
    - Varje krav beskriver ett enda verifierbart kriterium. Dela upp krav som specificerar flera fält, beteenden eller villkor i separata krav. Ett test kan verifiera ett eller flera krav.
-   - Varje test ska referera till ett eller flera krav-ID:n. Varje krav ska ha minst ett automatiserat test kopplat till sig.
+   - Varje automatiserat test ska referera till ett eller flera krav-ID:n. Varje krav verifieras enligt sin klassificering: automatiskt, manuellt eller båda.
    - Lägg inte testspårningslistor i komponenternas `.spec.md`-filer. Placera tester så komponenten går att härleda från testsökvägen; varje test anger krav-ID:n i namn eller metadata.
-   - Lägg till ett CI-steg som läser krav-ID:n per typ från varje komponentmapps `.spec.md`, kontrollerar att inga ID:n dupliceras inom komponenten och att varje enskilt krav-ID förekommer i minst ett automatiserat test för komponenten. CI ska rapportera komponent och krav-ID för saknade tester.
+   - Märk varje krav `Automatiserad`, `Manuell` eller `Båda`. CI läser krav-ID per typ från varje `.spec.md`, hittar dubbletter och kräver automatiskt test för `Automatiserad`/`Båda` samt godkänd post i [manuell tillgänglighetschecklista](accessibility-manual-checks.md) för `Manuell`/`Båda`. Rapportera komponent och krav-ID vid saknad verifiering.
+   - Manuella kontrollposter anger krav-ID, kontrollsteg, resultat, datum och PR/commit-länk. Ingen kontroll får rapporteras som utförd utan belägg.
+   - Använd Vitest, Testing Library med `user-event`, jsdom och V8 coverage för unit-/komponent-/integrationstester; Playwright för E2E. Lås kompatibla stabilversioner när appens package-manifest skapas.
+   - Storybook dokumenterar delade UI-komponenter; kör produktionsbuild i CI. Lås kompatibel stabilversion när appen scaffoldas.
    - Användarmanual med förutsättningar, testdata, stegvisa demo-flöden och förväntat resultat.
    - Ersätt befintlig `README.md` med projektets start- och bidragsguide. Behåll och integrera kursens viktiga fork-, löpande PR- och inlämningsinstruktioner så att inget befintligt kursflöde går förlorat.
    - README ska förklara förutsättningar och installation, starta appen lokalt, hur SQLite initieras och seed-data skapas, hur lokal demodata återställs, hur tester/täckning/lint/typkontroll körs samt hur interna PR:er och granskning går till.
    - Skilj utvecklarinstruktioner från lärarens demo-flöde och länka vidare till användarmanual, krav, veckostatus och AI-instruktioner i stället för att duplicera deras innehåll.
    - Veckostatus för vecka 5–8 sparas var för sig i dokumentationen och länkas från den löpande PR:n. Varje status beskriver planerat, genomfört (med länkar), verifierat (kontroller och resultat), osäkert/ofärdigt samt nästa steg och ansvarig.
    - Korta, ämnesindelade AI-instruktioner; undvik duplicerade regler och håll filer omkring 60 rader eller färre där det passar.
+   - Spåra manuella tillgänglighetskontroller per krav-ID med kontrollsteg, resultat, datum och PR/commit i [checklistan](accessibility-manual-checks.md).
 
 7. **GitHub-arbetsflöde**
-   - PR:er inom teamets fork går till dess `main`; CI kontrollerar build och tester och kräver grönt resultat före merge.
+   - Kör CI endast för `pull_request` riktad mot teamets `main`. Kursens löpande PR-workflow ändras inte.
+   - Installera Node.js `24.22.2` och pnpm 10 med låst pnpm-patch via `pnpm install --frozen-lockfile`; kör lint, TypeScript-kontroll, Vitest med täckning, krav-ID-/dubblett-/saknad-verifiering, Playwright E2E med isolerad temporär SQLite, Storybook-produktionsbuild och produktionsbuild.
+   - Alla CI-checks ska vara gröna före merge till teamets `main`; branch protection/ruleset ska kräva dessa checks.
    - Behåll kursens löpande PR till kursrepot enligt README; CI-ändringen avser teamets interna utvecklingsflöde.
    - Lägg inte till workflow som ändrar kursrepots befintliga inlämningsflöde utan separat beslut.
+   - CI-designen är beslutad men ännu inte implementerad. Se [besluts- och uppföljningsloggen](todo.md) för saknade teknikbeslut och återstående arbete.
 
 ## Föreslagen ordning
 
-1. Besluta fältgränser, kategorier, prioriteter, statusflöde, SQL-constraints och regler för seedning.
+1. Översätt beslutade fält, kategorier, prioriteter, statusflöde och seedregler till SQL-schema och constraints; slutför kvarvarande tekniska val enligt [beslutsloggen](todo.md).
 2. Numrera krav, skriv komponent-/feature-specifikationer, SQL-schema, teststrategi och krav-till-test-matris innan implementation.
 3. Skapa Next.js/TypeScript-grund, feature-driven struktur, lokal SQLite-initiering och idempotent demodata.
 4. Bygg gemensamma komponenter och ärendeflöden stegvis med TDD, WCAG 2.2 AA och responsiv UI.
@@ -98,7 +109,7 @@ Planera en mobilanpassad Next.js-applikation i TypeScript för att skapa, visa, 
 - Repo är en kursmall. Dess README beskriver en löpande PR från teamets fork till kursrepot och interna PR:er till teamets `main`; planen behåller det upplägget.
 - Appen är endast avsedd att köras lokalt av lärare. Publicering, hosting och online-drift ingår inte.
 - Första versionen använder lokal SQLite och saknar autentisering; använd endast fiktiva uppgifter.
-- Föreslagna kategorier och prioritetsnivåer ska beslutas och kravsättas innan SQL-schemat låses.
+- Beslutade kategorier är Konto, Betalning, Leverans, Retur/reklamation och Övrigt; prioriteter är Låg, Normal, Hög och Akut. Använd samma värden i UI, servervalidering och SQLite-constraints.
 - Använd endast fiktiva kunduppgifter i test- och demodata.
 
 ## Minimikrav och testspårbarhet
@@ -121,7 +132,7 @@ Planerade testnivåer:
 - **Komponent-/API-tester:** fältfel, begripligt fel, tomt resultat, sökning och statusfilter.
 - **End-to-end:** lärarens centrala användarflöde i webbläsaren, uppdaterad status, refresh utan dataförlust och beständighet efter omstart av appen.
 - **Seed-test:** tom databas får exempelärenden; upprepad initiering skapar inga dubbletter och skriver inte över ändrade ärenden.
-- **Test-ID:n:** tester hänvisar till komponentens lokala krav-ID. CI verifierar per komponent varje ID i `.spec.md` mot dess automatiserade tester och rapporterar saknade tester/dubbletter. Ett test får täcka flera krav; ID-nummer kan återanvändas av andra komponenter. Ingen manuell spårningslista i `.spec.md`.
+- **Test-ID:n:** varje krav klassificeras `Automatiserad`, `Manuell` eller `Båda`. Tester hänvisar till komponentens lokala krav-ID; CI kräver test för `Automatiserad`/`Båda` och godkänd checklistpost för `Manuell`/`Båda`, samt rapporterar saknad verifiering och dubbletter. Ett test får täcka flera krav; ID-nummer kan återanvändas av andra komponenter. Ingen testspårningslista i `.spec.md`.
 - **WCAG-verifiering:** varje tillgänglighetskrav får automatiserade kontroller där det går; komplettera med dokumenterade manuella tangentbords- och skärmläsartester.
 - **Täckning:** mål 100 % statement-, branch-, function- och line-täckning för testbar produktionskod. Om 100 % inte är rimligt, dokumentera kvarvarande kod, motivering och beslutad täckningsnivå; teamet tar ett aktivt beslut om avvikelsen.
 
