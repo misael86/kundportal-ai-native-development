@@ -23,14 +23,17 @@ Använd produkterna som referenser för specifika principer, inte som mallar att
 - Stöd både ljust och mörkt tema.
 - Följ operativsystemets temainställning initialt. Om användaren väljer tema manuellt ska valet kommas ihåg.
 - Säkerställ läsbar text, begripliga statusar och tillräcklig kontrast i båda temana. Förmedla inte status enbart med färg.
-- Exakt palett, färgtokens och var temavalet lagras fastställs när appen implementeras.
+- Använd en återhållsam neutral B2B-palett med varm ljus yta, mörk skiffer i mörkt läge och teal som accent. Statusar har egna semantiska färger och kompletteras alltid av text.
+- Gemensamma ytor, text, konturer, fokus, knappar, statusar och notifieringar styrs av CSS-variabler i `src/app/globals.css`.
+- Utan cookie-värde används operativsystemets färgschema. Manuella val (`light` eller `dark`) sparas i en förstapartscookie; `system` tar bort det manuella valet.
+- Storybook visar komponenter i båda temana via temaväljaren i verktygsfältet.
 
 ## Tangentbord och fokus
 
 - Alla interaktiva delar ska vara användbara med tangentbord och följa en logisk fokusordning.
 - Visa en tydlig och konsekvent fokusindikator för tangentbordsnavigation. Den ska fungera i båda temana, ha god kontrast mot omgivningen och inte förlita sig enbart på färg.
 - Ta inte bort webbläsarens fokusindikator utan att ersätta den med en minst lika synlig indikator.
-- Exakt fokusstil och fokusdesign-token fastställs när komponenterna implementeras.
+- Komponenterna använder `:focus-visible` med en 3 px fokusram och tokenen `--focus-ring`; kontrollera den manuellt i båda temana.
 
 ## Responsivitet och tillgänglighet
 
@@ -39,6 +42,6 @@ Använd produkterna som referenser för specifika principer, inte som mallar att
 - Verifiera faktiska komponenter och flöden; anta inte att de är tillgängliga för att en inspirationskälla använder ett liknande mönster.
 - Följ kravspecifikationerna och dokumentera utförda manuella tillgänglighetskontroller i [checklistan](accessibility-manual-checks.md).
 
-## Detaljer att besluta vid implementation
+## Designgrund
 
-Definiera gemensamma designtokens för färger, typografi, avstånd (inklusive padding och margin) och fokus när appens grund byggs. Återanvänd tokens i hela gränssnittet i stället för att upprepa värden i enskilda komponenter. Fastställ även hur användarens temaval koms ihåg. Verifiera kontrast i båda temana och visa centrala tillstånd i Storybook.
+Designtokens för färg, typografi, avstånd, radier och fokus finns i appens globala CSS. Återanvänd tokens i komponenterna i stället för att upprepa färg- och avståndsvärden. Verifiera kontrast i båda temana och visa centrala tillstånd i Storybook.

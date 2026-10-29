@@ -103,9 +103,9 @@ Planera en mobilanpassad Next.js-applikation i TypeScript för att skapa, visa, 
 
 1. Översätt beslutade fält, kategorier, prioriteter, statusflöde och seedregler till SQL-schema och constraints; slutför kvarvarande tekniska val enligt [beslutsloggen](todo.md).
 2. Numrera krav, skriv komponent-/feature-specifikationer, SQL-schema, teststrategi och krav-till-test-matris innan implementation.
-3. Skapa Next.js/TypeScript-grund, feature-driven struktur, lokal SQLite-initiering och idempotent demodata.
-4. Bygg gemensamma komponenter och ärendeflöden stegvis med TDD, WCAG 2.2 AA och responsiv UI.
-5. Ersätt README med bidrags- och körguide; lägg till Storybook, CI, användarmanual och veckostatusar; verifiera hela systemet, inklusive beständighet.
+3. Skapa Next.js/TypeScript-grund, feature-driven struktur, Storybook och delade komponenter med TDD samt ljust/mörkt tema.
+4. Implementera lokal SQLite-initiering, idempotent demodata och ärendeflöden stegvis med TDD, WCAG 2.2 AA och responsiv UI.
+5. Dokumentera körning och bidrag; lägg till CI, användarmanual och veckostatusar; verifiera hela systemet, inklusive beständighet.
 
 ## Beslut och hänsyn
 

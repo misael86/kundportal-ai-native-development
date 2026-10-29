@@ -9,6 +9,7 @@ Använd `Godkänd` eller `Underkänd` efter utförd kontroll. Före granskning l
 | Specfil#krav-ID | Kontrollsteg | Resultat | Datum | PR/commit |
 |---|---|---|---|---|
 | `src/shared/ui/button/button.spec.md#T4` | Kontrollera synlig fokusindikator med tangentbord i normal- och fokuserat läge. |  |  |  |
+| `src/shared/ui/theme-switcher/theme-switcher.spec.md#T3` | Kontrollera synlig fokusindikator på temaväljaren i ljust och mörkt tema. |  |  |  |
 | `src/shared/ui/status-badge/status-badge.spec.md#T2` | Kontrollera textkontrast för alla statusvarianter mot deras faktiska bakgrunder. |  |  |  |
 | `src/shared/ui/notification/notification.spec.md#T3` | Navigera till avfärdningsknappen med tangentbord och kontrollera synligt fokus och begripligt namn. |  |  |  |
 | `src/features/issues/components/issue-form/issue-form.spec.md#T3` | Genomför skapa- och redigeringsflöde enbart med tangentbord; kontrollera fokusordning och aktivering. |  |  |  |

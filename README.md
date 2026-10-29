@@ -2,13 +2,14 @@
 
 Lokal demoapp för att registrera, visa och hantera kundärenden. Projektet byggs med Next.js och TypeScript, SQLite och testdriven utveckling. Använd endast fiktiva uppgifter. Appen ska köras lokalt och inte publiceras.
 
-> **Projektstatus:** Just nu finns planering och kravspecifikationer, men ingen körbar app. Kommandon för app, seedning och tester nedan är planerade och blir tillgängliga när motsvarande projektkod och scripts har lagts till.
+> **Projektstatus:** En första Next.js-grund, delade UI-komponenter och Storybook finns. Ärendeflöden, SQLite, E2E och CI är fortfarande planerade.
 
 ## Dokumentation
 
 - [Projektplan](docs/plan.md)
 - [Öppna beslut och uppföljning](docs/todo.md)
 - [UI-riktlinjer](docs/ui-guidelines.md)
+- [Manuella tillgänglighetskontroller](docs/accessibility-manual-checks.md)
 - [Komponentspecifikationer](src/shared/ui/)
 - [Feature-specifikationer](src/features/issues/components/)
 - [Sidspecifikationer](src/app/)
@@ -16,15 +17,14 @@ Lokal demoapp för att registrera, visa och hantera kundärenden. Projektet bygg
 
 ## Kom igång lokalt
 
-När appens grund är på plats:
-
-1. Installera den Node.js-version och pnpm-version som anges i projektets konfiguration.
+1. Installera Node.js `24.22.2` och pnpm `10.30.1` enligt `.nvmrc` och `packageManager`.
 2. Klona teamets fork och gå till projektmappen.
 3. Installera beroenden med `pnpm install --frozen-lockfile`.
-4. Starta utvecklingsservern med `pnpm dev`.
-5. Öppna adressen som visas i terminalen, vanligtvis `http://localhost:3000`.
+4. Starta appen med `pnpm dev` eller Storybook med `pnpm storybook`.
+5. Öppna adressen som visas i terminalen, vanligtvis `http://localhost:3000` respektive `http://localhost:6006`.
 
 Appen är avsedd för lokal körning av teamet och läraren. Den ska inte driftsättas eller publiceras.
+Storybook visar delade komponenter med tema-väljaren i verktygsfältet. Appens färgtema följer systeminställningen tills ett manuellt val sparas i en cookie.
 
 ## SQLite och demodata
 
@@ -36,18 +36,21 @@ Appen är avsedd för lokal körning av teamet och läraren. Den ska inte drifts
 
 ## Tester och kvalitetskontroller
 
-Följ TDD: skriv test före implementation. Varje krav märks `Automatiserad`, `Manuell` eller `Båda` och verifieras enligt märkningen. CI kontrollerar tester och dokumenterad manuell verifiering.
+Följ TDD: skriv test före implementation. Varje krav märks `Automatiserad`, `Manuell` eller `Båda` och verifieras enligt märkningen. CI-kontroll av kravspårning är planerad men ännu inte implementerad.
 
-Följande kommandon är planerade. Exakta scripts fastställs i `package.json` när verktygen och testupplägget har lagts till:
+Tillgängliga kontroller:
 
-| Kontroll | Planerat kommando |
+| Kontroll | Kommando |
 |---|---|
-| Enhets-, komponent- och integrationstester | `pnpm test` |
+| Enhets- och komponenttester | `pnpm test` |
 | Täckningsrapport | `pnpm test:coverage` |
-| End-to-end-tester | `pnpm test:e2e` |
 | ESLint | `pnpm lint` |
 | TypeScript | `pnpm typecheck` |
-| Produktionsbuild | `pnpm build` |
+| Next.js produktionsbuild | `pnpm build` |
+| Storybook utvecklingsläge | `pnpm storybook` |
+| Storybook produktionsbuild | `pnpm build-storybook` |
+
+End-to-end-tester, SQLite och CI läggs till när motsvarande delar implementeras.
 
 Målet är 100 % line-, statement-, function- och branch-täckning av testbar produktionskod. Täckning är ett kvalitetsmål, inte ett skäl att skriva tester utan meningsfulla påståenden. Tester ska verifiera verkligt beteende och får inte mocka centrala delar som testas eller använda framgångsstubbar som alltid ger grönt. Fasta test-fixtures är tillåtna som indata. Om återstående kod saknar meningsfull testmöjlighet ska den och skälet dokumenteras för teamets beslut; sänk inte målet tyst. Se [testinstruktionen](.github/instructions/tests.instructions.md).
 

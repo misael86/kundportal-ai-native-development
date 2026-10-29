@@ -8,7 +8,7 @@ Använd denna logg för öppna och senarelagda beslut samt beslutad men ej genom
 
 ## Senarelagda beslut
 
-- [ ] **Exakta verktygsversioner:** lås kompatibla stabilversioner för Vitest, Testing Library, jsdom, V8 coverage, Playwright och Storybook när appens package-manifest skapas.
+- [ ] **Playwright-version:** lås kompatibel stabilversion när E2E-testning läggs till.
 - [ ] **CI-checknamn:** fastställ exakta checknamn när workflow implementeras; konfigurera sedan branch protection/ruleset mot dessa.
 
 ## Beslutade val
@@ -31,9 +31,11 @@ Använd denna logg för öppna och senarelagda beslut samt beslutad men ej genom
 
 ## Beslutade, ej genomförda
 
-- [ ] Konfigurera Node.js-versionen i projektets versionsfil och CI; lås exakt pnpm-patch i `packageManager`.
+- [x] Lås Node.js `24.22.2` i `.nvmrc` och `engines`; lås pnpm-patch i `packageManager`.
+- [x] Skapa Next.js-/Storybook-grund med delade komponenter, stories och komponenttester.
 - [ ] Implementera CI enligt [projektplanen](plan.md), inklusive Storybook-build och kravverifiering.
 - [ ] Aktivera branch protection/ruleset så CI-checks krävs före merge till teamets `main`.
 - [ ] Implementera och dokumentera beslutad SQLite-/servergräns och validering i appen.
 - [ ] Implementera beslutade kategorier, prioriteter, redigering, sortering och sökbeteende i applikation och databas.
-- [ ] Implementera ljust och mörkt tema enligt systeminställning med sparat manuellt val, samt verifiera fokusindikator och kontrast i båda temana enligt [UI-riktlinjerna](ui-guidelines.md).
+- [x] Implementera systemtema, sparat manuellt temaval och temaväljare enligt [UI-riktlinjerna](ui-guidelines.md).
+- [ ] Genomföra och dokumentera manuell kontroll av fokusindikator och kontrast i båda temana enligt [UI-riktlinjerna](ui-guidelines.md).

@@ -1,0 +1,54 @@
+.notification {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  padding: 0.875rem;
+}
+
+.success {
+  border-color: var(--notice-success-text);
+  background: var(--notice-success-bg);
+  color: var(--notice-success-text);
+}
+
+.error {
+  border-color: var(--notice-error-text);
+  background: var(--notice-error-bg);
+  color: var(--notice-error-text);
+}
+
+.icon {
+  flex: none;
+  margin-top: 0.125rem;
+}
+
+.message {
+  flex: 1;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.dismiss {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  place-items: center;
+  margin: -0.5rem -0.5rem -0.5rem 0;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.dismiss:hover {
+  background: rgb(0 0 0 / 8%);
+}
+
+.dismiss:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
