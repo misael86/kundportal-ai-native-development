@@ -1,52 +1,78 @@
-# Kundserviceportalen Grupp 7
+# Kundserviceportalen — Grupp 7
 
-Här samlar ni teamets arbete med Kundserviceportalen i kursen AI Native Development. Ni väljer teknik och bygger en mindre fullstacklösning med AI-stöd. Använd bara påhittade kunduppgifter.
+Lokal demoapp för att registrera, visa och hantera kundärenden. Projektet byggs med Next.js och TypeScript, SQLite och testdriven utveckling. Använd endast fiktiva uppgifter. Appen ska köras lokalt och inte publiceras.
 
-**Uppgift, betygskriterier, veckoförväntningar och deadline finns under Kursexamination i Disco.** Börja där och återvänd dit under arbetet.
-[Länk till Disco](https://technigo.disco.co/p/fall-2026-ai-native-development/collection/Q29sbGVjdGlvbjozNzg3Ng==?u=25dab1f8-7abb-463e-a19e-d379efb7caae&drawerTab=comments)
+> **Projektstatus:** En första Next.js-grund, delade UI-komponenter och Storybook finns. Ärendeflöden, SQLite, E2E och CI är fortfarande planerade.
 
-## Kom igång
+## Dokumentation
 
-Projektarbetet börjar vecka 5. Ni får börja frivilligt vecka 4; den veckans fristående kodövning finns kvar.
+- [Projektplan](docs/plan.md)
+- [Öppna beslut och uppföljning](docs/todo.md)
+- [UI-riktlinjer](docs/ui-guidelines.md)
+- [Manuella tillgänglighetskontroller](docs/accessibility-manual-checks.md)
+- [Komponentspecifikationer](src/shared/ui/)
+- [Feature-specifikationer](src/features/issues/components/)
+- [Sidspecifikationer](src/app/)
+- [Veckostatus](docs/weekly-status/)
 
-1. Läs uppgiften och veckans förväntningar i Disco.
-2. **En person i teamet skapar en publik fork** från [kursens repository](https://github.com/Technigo/kundportal-ai-native-development) på sitt GitHub-konto. Den personen bjuder in övriga teammedlemmar som **collaborators** via **Settings -> Collaborators -> Add people**. Alla accepterar sin inbjudan och kontrollerar att de kan pusha till teamets fork. Vi kan läsa koden och underlagen i den publika forken utan en separat inbjudan.
-3. Klona teamets fork till era datorer.
-4. Gör en första förändring: beskriv teamet och er första plan i er dokumentation. Committa och pusha förändringen till `main` i teamets fork. Körbar kod behövs inte för att öppna PR:n.
-5. Öppna teamets löpande PR enligt nästa avsnitt.
-6. Fortsätt med projektarbetet enligt vecka 5 i Disco.
+## Kom igång lokalt
 
-Ni arbetar i **samma fork** under projektet. Det räcker att en person skapar den. Se [GitHubs instruktion för att bjuda in collaborators](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository) om ni behöver hjälp.
+1. Installera Node.js `24.22.2` och pnpm `10.30.1` enligt `.nvmrc` och `packageManager`.
+2. Klona teamets fork och gå till projektmappen.
+3. Installera beroenden med `pnpm install --frozen-lockfile`.
+4. Starta appen med `pnpm dev` eller Storybook med `pnpm storybook`.
+5. Öppna adressen som visas i terminalen, vanligtvis `http://localhost:3000` respektive `http://localhost:6006`.
 
-## Branches och pull requests
+Appen är avsedd för lokal körning av teamet och läraren. Den ska inte driftsättas eller publiceras.
+Storybook visar delade UI-komponenter under `Shared/` och ärendefeature-komponenter under `Issues/`; ärendekomponenterna är inte delade komponenter. Använd verktygsfältets temaväljare för att granska båda temana. Appens färgtema följer systeminställningen tills ett manuellt val sparas i en cookie.
 
-Teamets löpande PR går **från `main` i teamets fork till `main` i kursens repository**.
+## SQLite och demodata
 
-| Val i GitHub | Ange |
+- SQLite-databasen ska lagras lokalt under `data/` och finnas kvar efter omstart.
+- Vid första start ska databasschemat skapas och syntetiska demoärenden seedas automatiskt om databasen är tom.
+- Seedning ska vara idempotent: omstart får inte skapa dubbletter eller skriva över ändrade ärenden.
+- Testerna ska använda en separat temporär databas, aldrig den lokala demo-databasen.
+- Databasschema, seed- och återställningskommando dokumenteras här när de har implementerats. Ta inte bort den lokala databasen för att felsöka innan du kontrollerat om du behöver spara demoändringar.
+
+## Tester och kvalitetskontroller
+
+Följ TDD: skriv test före implementation. Varje krav märks `Automatiserad`, `Manuell` eller `Båda` och verifieras enligt märkningen. CI-kontroll av kravspårning är planerad men ännu inte implementerad.
+
+Tillgängliga kontroller:
+
+| Kontroll | Kommando |
 |---|---|
-| Base repository | `Technigo/kundportal-ai-native-development` |
-| Base | `main` |
-| Head repository | Teamets fork |
-| Compare | `main` |
+| Enhets- och komponenttester | `pnpm test` |
+| Täckningsrapport | `pnpm test:coverage` |
+| ESLint | `pnpm lint` |
+| TypeScript | `pnpm typecheck` |
+| Next.js produktionsbuild | `pnpm build` |
+| Storybook utvecklingsläge | `pnpm storybook` |
+| Storybook produktionsbuild | `pnpm build-storybook` |
 
-Välj **compare across forks** om båda repositories inte visas. Använd teamets namn i PR-rubriken. Kopiera innehållet i [PR-mallen för teamets projekt](.github/PULL_REQUEST_TEMPLATE/teamets-projekt.md) till beskrivningen och fyll i det som finns vid starten. Resten växer fram under projektet.
+End-to-end-tester, SQLite och CI läggs till när motsvarande delar implementeras.
 
-Håll samma PR öppen under projektperioden. Den används för uppföljning och inlämning och ska inte mergas till kursens repository under arbetet. Nya commits på teamets `main` syns i samma PR.
+Målet är 100 % line-, statement-, function- och branch-täckning av testbar produktionskod. Täckning är ett kvalitetsmål, inte ett skäl att skriva tester utan meningsfulla påståenden. Tester ska verifiera verkligt beteende och får inte mocka centrala delar som testas eller använda framgångsstubbar som alltid ger grönt. Fasta test-fixtures är tillåtna som indata. Om återstående kod saknar meningsfull testmöjlighet ska den och skälet dokumenteras för teamets beslut; sänk inte målet tyst. Se [testinstruktionen](.github/instructions/tests.instructions.md).
 
-Inom teamets fork kan ni använda separata branches för mindre uppgifter och granska dem i interna PR:er till **teamets egen `main`**. Kontrollera vilket repository som är mål innan ni öppnar en intern PR. Gör granskningen spårbar: vem granskade, vad kontrollerades och vad ledde återkopplingen till?
+## Bidra
 
-[GitHubs guide för PR från en fork](https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request-from-a-fork) beskriver valen i gränssnittet.
+1. Läs relevant kravspecifikation och AI-instruktioner innan du börjar.
+2. Bekräfta eller komplettera krav före implementation. Placera varje komponents eller sidas `.spec.md` bredvid dess kod.
+3. Arbeta i en egen branch och gör små, fokuserade commits.
+4. Skriv tester först. Kör relevanta tester och kontroller före PR.
+5. Öppna en intern PR till teamets `main`. Be en teammedlem granska ändringen och invänta grön CI innan merge.
+6. Uppdatera veckostatusen och länka den från kursens löpande PR.
 
-## Er dokumentation
+Krav-ID:n är lokala per komponent och kravtyp (`K`, `D`, `T`, `F`). Dela upp sammansatta krav i separata, verifierbara kriterier. Ett test får verifiera flera krav. Se [instruktionen för kravspecifikationer](.github/instructions/component-specs.instructions.md) och [testinstruktionen](.github/instructions/tests.instructions.md).
 
-Ni utformar själva dokumentationen och styrningen av era AI-verktyg utifrån uppgiften i Disco. Länka till teamets gemensamma underlag från den löpande PR:n, så att vi kan följa ert arbete.
+## Kursens fork, PR och inlämning
 
-## Slutversion och inlämning
+- En teammedlem skapar en publik fork av [kursens repository](https://github.com/Technigo/kundportal-ai-native-development) och bjuder in övriga som collaborators. Hela teamet arbetar i den forken.
+- Öppna och behåll kursens löpande PR från teamets forks `main` till kursrepots `main` under hela projektperioden. Den PR:n används för uppföljning och examination; merga den inte under arbetet.
+- Vid PR till kursrepot: välj `Technigo/kundportal-ai-native-development` som base repository, `main` som base, teamets fork som head repository och dess `main` som compare. Välj **compare across forks** om det behövs.
+- Interna arbets-PR:er går från feature-branch till teamets egen `main`. Kontrollera noga att rätt repository är valt som PR-mål.
+- Uppdatera den löpande PR:n varje vecka med en länk till veckans status. Bevara tidigare veckor.
+- Lägg slutversionens commit-länk i den löpande PR:n enligt kursens instruktioner.
+- Individuell redovisning lämnas som Markdown-fil i studentens egen inlämning i Disco; lägg den inte i teamets repository.
 
-När gruppens kod, tester och gemensamma dokumentation är pushade kopierar ni länken till den commit som innehåller slutversionen. Lägg länken överst i teamets löpande PR-beskrivning under **Slutversion för examination**. Kontrollera att länkarna till underlagen visar den inlämnade versionen i teamets fork.
-
-Varje student lämnar sin individuella redovisning som en **Markdown-fil (.md) i sin egen inlämning i Disco**. Märk dokumentet med ditt namn och länka till teamets fork, löpande PR, markerade slutversion och det arbete som visar ditt eget bidrag.
-
-Den individuella redovisningen ska inte läggas i teamets repository eller länkas från teamets PR. Du behöver inte dela dokumentet med dina klasskamrater. Gruppens kod, tester och gemensamma dokumentation finns fortsatt på GitHub.
-
-Följ den aktuella instruktionen och deadlinen i Disco.
+Läs uppgift, veckoförväntningar och deadlines i [Disco](https://technigo.disco.co/p/fall-2026-ai-native-development/collection/Q29sbGVjdGlvbjozNzg3Ng==?u=25dab1f8-7abb-463e-a19e-d379efb7caae&drawerTab=comments). Se även [GitHubs guide till PR från en fork](https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request-from-a-fork).

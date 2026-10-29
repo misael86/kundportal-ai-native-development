@@ -1,0 +1,30 @@
+.badge {
+  display: inline-flex;
+  min-height: 1.75rem;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.new {
+  background: var(--status-new-bg);
+  color: var(--status-new-text);
+}
+
+.progress {
+  background: var(--status-progress-bg);
+  color: var(--status-progress-text);
+}
+
+.waiting {
+  background: var(--status-waiting-bg);
+  color: var(--status-waiting-text);
+}
+
+.done {
+  background: var(--status-done-bg);
+  color: var(--status-done-text);
+}
