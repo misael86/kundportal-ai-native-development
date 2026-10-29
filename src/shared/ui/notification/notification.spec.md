@@ -6,20 +6,20 @@
 
 ## Krav — funktionella (K)
 
-- **K1 — Meddelandetext:** visar den text som skickas in av anroparen.
-- **K2 — Variant:** stödjer framgångs- och felmeddelanden med visuellt särskiljbara varianter.
-- **K3 — Avfärda:** användaren kan stänga en notifiering utan att ändra det sparade ärendet.
+- **K1 — Meddelandetext:** visar den text som skickas in av anroparen. **Verifiering:** Automatiserad.
+- **K2 — Variant:** stödjer framgångs- och felmeddelanden med visuellt särskiljbara varianter. **Verifiering:** Automatiserad.
+- **K3 — Avfärda:** användaren kan stänga en notifiering utan att ändra det sparade ärendet. **Verifiering:** Automatiserad.
 
 ## Krav — tillgänglighet (T)
 
-- **T1 — Framgångsmeddelande:** framgång meddelas med en statusregion som annonseras artigt av hjälpmedel.
-- **T2 — Felmeddelande:** fel meddelas med en alertregion som hjälpmedel annonserar direkt.
-- **T3 — Avfärdningsknapp:** stängningskontrollen har tillgängligt namn, synlig fokusmarkering och fungerar med tangentbord.
-- **T4 — Text och ikon:** betydelsen går att förstå utan färg; ikon förstärker texten och är dekorativ för hjälpmedel.
+- **T1 — Framgångsmeddelande:** framgång meddelas med en statusregion som annonseras artigt av hjälpmedel. **Verifiering:** Automatiserad.
+- **T2 — Felmeddelande:** fel meddelas med en alertregion som hjälpmedel annonserar direkt. **Verifiering:** Automatiserad.
+- **T3 — Avfärdningsknapp:** stängningskontrollen har tillgängligt namn, synlig fokusmarkering och fungerar med tangentbord. **Verifiering:** Båda.
+- **T4 — Text och ikon:** betydelsen går att förstå utan färg; ikon förstärker texten och är dekorativ för hjälpmedel. **Verifiering:** Automatiserad.
 
 ## Krav — felhantering (F)
 
-- **F1 — Ingen falsk bekräftelse:** misslyckad åtgärd visas inte som framgångsnotifiering.
+- **F1 — Ingen falsk bekräftelse:** misslyckad åtgärd visas inte som framgångsnotifiering. **Verifiering:** Automatiserad.
 
 ## Beteende
 

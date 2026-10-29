@@ -8,7 +8,8 @@ applyTo: "**/*.{test,spec}.{ts,tsx}"
 - Skriv/uppdatera test före implementation (TDD).
 - Lägg komponenttester bredvid komponenten. Lägg feature-, databas- och E2E-tester i tydlig feature-/testmapp.
 - Ange komponentens krav-ID i testnamn eller metadata. Testsökvägen ska identifiera komponent/feature för CI.
-- Varje `.spec.md`-krav ska förekomma i minst ett automatiserat test; ett test får täcka flera krav.
+- Varje krav märks `Automatiserad`, `Manuell` eller `Båda`. Krav märkta `Automatiserad`/`Båda` ska förekomma i minst ett automatiserat test; ett test får täcka flera krav.
+- Krav märkta `Manuell`/`Båda` ska ha fullständig, godkänd post med krav-ID, steg, resultat, datum och PR/commit-länk i `docs/accessibility-manual-checks.md`. Hitta inte på verifieringsresultat.
 - Testa observerbart beteende, inte implementationens detaljer. Varje test ska kunna fallera vid felaktigt beteende.
 - Täck relevanta lyckade flöden, fel, tomt/laddande läge, tillåtna värden och gränsen precis under/vid/över.
 - Verifiera felmeddelanden och att misslyckande inte ger falsk framgång eller raderar användarens indata.

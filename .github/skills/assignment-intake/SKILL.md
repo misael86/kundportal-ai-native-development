@@ -10,7 +10,7 @@ Använd vid nya, större projektuppdrag. Hoppa över vid enkla faktafrågor, sm�
 ## 1. Undersök och grilla
 
 1. Läs relevanta instruktioner, krav, kod och valideringsskript. Ta reda på fakta själv; fråga användaren om beslut.
-2. Kartlägg beslut och beroenden. Ställ alla avgörande frågor som går att besvara nu i en numrerad omgång. Ge rekommendation till varje fråga; formulera så att ”ja” godtar den.
+2. Kartlägg beslut och beroenden. Ställ alla avgörande frågor som går att besvara nu i en numrerad omgång. Ge högst tre alternativ per fråga, rekommendera ett och formulera så att ”ja” godtar rekommendationen.
 3. Vänta på svar. Uppdatera kartan och fråga igen först när nya beslut låsts upp.
 4. Planera eller utför inte medan avgörande frågor är öppna. Säg uttryckligen när alla är lösta.
 

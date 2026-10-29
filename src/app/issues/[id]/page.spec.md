@@ -1,21 +1,21 @@
-# Issue detail
+# Ärendedetalj
 
 **Route:** `/issues/[id]`
-**Page:** Shows the selected issue and provides access to editing and status changes.
+**Sida:** visar valt ärende och ger tillgång till redigering och statusändring.
 
-## Functional requirements (K)
+## Krav — funktionella (K)
 
-- **K1 — Open selected issue:** A valid ID displays the corresponding issue details, as defined in the [IssueDetail component specification](../../../features/issues/components/issue-detail/issue-detail.spec.md).
-- **K2 — Save status change:** The page lets the user save a status change for the selected issue.
-- **K3 — Return to list:** The page provides a navigable way back to the issue overview.
+- **K1 — Öppna valt ärende:** giltigt ID visar motsvarande ärendedetaljer enligt [IssueDetail-specifikationen](../../../features/issues/components/issue-detail/issue-detail.spec.md). **Verifiering:** Automatiserad.
+- **K2 — Spara statusändring:** sidan låter användaren spara statusändring för valt ärende. **Verifiering:** Automatiserad.
+- **K3 — Tillbaka till listan:** sidan har navigerbar länk tillbaka till ärendeöversikten. **Verifiering:** Automatiserad.
 
-## Accessibility requirements (T)
+## Krav — tillgänglighet (T)
 
-- **T1 — Page heading:** The page has a clear main heading identifying the detail or edit view.
-- **T2 — Responsive layout:** Content and controls work at 320 CSS pixels without horizontal page scrolling.
+- **T1 — Sidrubrik:** sidan har en tydlig huvudrubrik som beskriver detalj- eller redigeringsvyn. **Verifiering:** Automatiserad.
+- **T2 — Responsiv layout:** innehåll och kontroller fungerar vid 320 CSS-pixlars bredd utan horisontell sidscroll. **Verifiering:** Båda.
 
-## Error-handling requirements (F)
+## Krav — felhantering (F)
 
-- **F1 — Invalid ID:** An invalid issue ID displays an understandable error.
-- **F2 — Missing issue:** An ID without a matching issue displays an understandable not-found message.
-- **F3 — Status update error:** A failed status update is not presented as successful.
+- **F1 — Ogiltigt ID:** ogiltigt ärende-ID visar begripligt fel. **Verifiering:** Automatiserad.
+- **F2 — Ärende saknas:** ID utan motsvarande ärende visar begripligt besked om att det inte hittades. **Verifiering:** Automatiserad.
+- **F3 — Fel vid statusändring:** misslyckad statusändring presenteras inte som lyckad. **Verifiering:** Automatiserad.
