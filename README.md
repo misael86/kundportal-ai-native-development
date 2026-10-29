@@ -8,6 +8,7 @@ Lokal demoapp för att registrera, visa och hantera kundärenden. Projektet bygg
 
 - [Projektplan](docs/plan.md)
 - [Öppna beslut och uppföljning](docs/todo.md)
+- [UI-riktlinjer](docs/ui-guidelines.md)
 - [Komponentspecifikationer](src/shared/ui/)
 - [Feature-specifikationer](src/features/issues/components/)
 - [Sidspecifikationer](src/app/)

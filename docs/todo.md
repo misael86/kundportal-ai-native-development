@@ -25,6 +25,9 @@ Använd denna logg för öppna och senarelagda beslut samt beslutad men ej genom
 - [x] **Manuell tillgänglighetskontroll:** spåra krav-ID, kontrollsteg, resultat, datum och PR/commit i [checklistan](accessibility-manual-checks.md).
 - [x] **Sökning:** sök i rubrik, beskrivning och kategori. Trimma söktext; matcha delsträngar skiftlägesokänsligt, inklusive svenska tecken. Tom sökning ignoreras. Sökning kombineras med statusfilter.
 - [x] **CI-trigger:** kör workflow endast vid `pull_request` riktad mot teamets `main`. Kursens löpande PR ändras inte.
+- [x] **UI-inspiration:** Zendesk för support- och ärendeflöden, Plain för avskalad och modern B2B-känsla samt GOV.UK Design System för tillgängliga mönster. Använd som referenser, inte kopior; se [UI-riktlinjerna](ui-guidelines.md).
+- [x] **UI-teman:** stöd ljust och mörkt tema. Följ operativsystemets inställning initialt och kom ihåg användarens manuella temaval.
+- [x] **Tangentbordsfokus:** använd en tydlig, konsekvent fokusindikator som fungerar i både ljust och mörkt tema.
 
 ## Beslutade, ej genomförda
 
@@ -33,3 +36,4 @@ Använd denna logg för öppna och senarelagda beslut samt beslutad men ej genom
 - [ ] Aktivera branch protection/ruleset så CI-checks krävs före merge till teamets `main`.
 - [ ] Implementera och dokumentera beslutad SQLite-/servergräns och validering i appen.
 - [ ] Implementera beslutade kategorier, prioriteter, redigering, sortering och sökbeteende i applikation och databas.
+- [ ] Implementera ljust och mörkt tema enligt systeminställning med sparat manuellt val, samt verifiera fokusindikator och kontrast i båda temana enligt [UI-riktlinjerna](ui-guidelines.md).

@@ -68,6 +68,8 @@ Planera en mobilanpassad Next.js-applikation i TypeScript för att skapa, visa, 
    - Komponent-, integrations- och end-to-end-tester för centrala användningsfall.
    - WCAG 2.2 AA som krav för komponenter och flöden; kombinera automatiska kontroller med manuell tangentbords- och skärmläsartestning.
    - Responsiv design och verifiering på små och stora skärmar.
+   - Följ [UI-riktlinjerna](ui-guidelines.md): stöd ljust och mörkt tema, använd systeminställningen initialt och kom ihåg manuella temaval. Ge tangentbordsfokus en tydlig, konsekvent indikator i båda temana.
+   - Använd Zendesk som referens för supportflöden, Plain för avskalad B2B-känsla och GOV.UK Design System för tillgängliga mönster; kopiera inte produkternas gränssnitt.
    - Storybook för gemensamma komponenter med tillstånd och tillgänglighetsexempel.
 
 6. **Krav, dokumentation och AI-styrning**
@@ -81,6 +83,7 @@ Planera en mobilanpassad Next.js-applikation i TypeScript för att skapa, visa, 
    - Använd Vitest, Testing Library med `user-event`, jsdom och V8 coverage för unit-/komponent-/integrationstester; Playwright för E2E. Lås kompatibla stabilversioner när appens package-manifest skapas.
    - Storybook dokumenterar delade UI-komponenter; kör produktionsbuild i CI. Lås kompatibel stabilversion när appen scaffoldas.
    - Användarmanual med förutsättningar, testdata, stegvisa demo-flöden och förväntat resultat.
+   - Samla gemensam visuell riktning, temabeteende och fokusdesign i [UI-riktlinjerna](ui-guidelines.md); fastställ exakta färger, typografi och tokens vid implementation.
    - Ersätt befintlig `README.md` med projektets start- och bidragsguide. Behåll och integrera kursens viktiga fork-, löpande PR- och inlämningsinstruktioner så att inget befintligt kursflöde går förlorat.
    - README ska förklara förutsättningar och installation, starta appen lokalt, hur SQLite initieras och seed-data skapas, hur lokal demodata återställs, hur tester/täckning/lint/typkontroll körs samt hur interna PR:er och granskning går till.
    - Skilj utvecklarinstruktioner från lärarens demo-flöde och länka vidare till användarmanual, krav, veckostatus och AI-instruktioner i stället för att duplicera deras innehåll.
