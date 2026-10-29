@@ -1,22 +1,22 @@
 ---
-description: "Use when creating or editing Copilot instructions, file instructions, prompts, or agents. Keep AI customization files concise, focused, correctly scoped, and free of duplicate rules."
+description: "Använd när du skapar eller ändrar Copilot-instruktioner, prompts, agenter eller skills. Håll AI-filer korta, avgränsade och utan dubblerade regler."
 applyTo:
   - ".github/copilot-instructions.md"
   - ".github/instructions/**/*.instructions.md"
   - ".github/prompts/**/*.prompt.md"
   - ".github/agents/**/*.agent.md"
+  - ".github/skills/**/SKILL.md"
 ---
-
+# AI-konfigurationsfiler
 # AI-konfigurationsfiler
 
-- Skriv på svenska, kortfattat och med punktlistor. Ta bara med regler som hjälper AI:n att fatta ett annat eller bättre beslut.
-- Sikta på högst cirka 60 rader per fil. Dela bara upp när ämnen, målgrupper eller aktiveringsvillkor skiljer sig.
-- En fil ska ha ett tydligt syfte. Lägg inte allmänna projektregler i filspecifika instruktioner.
-- Välj rätt filtyp: `copilot-instructions.md` för regler som gäller det mesta arbetet; `.instructions.md` för ett ämne eller filurval; `.prompt.md` för en återanvändbar uppgift; `.agent.md` för en särskild agentroll.
-- Begränsa `applyTo` till berörda filer. Använd beskrivning för uppgiftsstyrda instruktioner; använd inte global matchning av slentrian.
-- Skriv en kort, sökbar `description` som börjar med när instruktionen ska användas.
-- Lägg bara till YAML-frontmatter som filtypen behöver. Citatmarkera beskrivningar och värden med specialtecken; använd korrekt indrag och inga tabbar.
-- Sök efter befintliga regler innan du lägger till nya. Länka till en källa i stället för att kopiera eller motsäga den.
-- Undvik vaga råd, självklarheter, upprepningar, långa bakgrundsavsnitt och regler som redan upprätthålls av verktyg.
-- Följ projektets preferens om korta, tydliga svar även när instruktionen gäller AI-filer.
-- Efter ändring: kontrollera filens målgrupp, `applyTo`, frontmatter och att regeln inte dupliceras i andra instruktioner.
+- Skriv kort på svenska. Ta bara med regler som ändrar AI:ns beslut.
+- Sikta på högst cirka 60 rader per fil. Dela bara när syfte, målgrupp eller aktivering skiljer sig.
+- En fil = ett tydligt syfte. Lägg inte globala regler i filspecifika instruktioner.
+- Välj rätt fil: `copilot-instructions.md` för generella regler; `.instructions.md` för ämne/filer; `.prompt.md` för återanvändbar uppgift; `.agent.md` för roll; `SKILL.md` för behovsstyrt arbetsflöde.
+- Begränsa `applyTo` till berörda filer. Använd uppgiftsbeskrivning vid behov; undvik slentrianmässig global matchning.
+- Skriv kort, sökbar `description` som anger när filen används.
+- Lägg bara till filtypens nödvändiga frontmatter. Citatmarkera specialvärden; använd korrekt YAML-indrag, aldrig tabbar.
+- Sök efter befintliga regler. Länka till källan i stället för att kopiera eller motsäga den.
+- Undvik vaga råd, självklarheter, upprepning, lång bakgrund och regler som verktyg redan upprätthåller.
+- Efter ändring: kontrollera målgrupp, `applyTo`, frontmatter och duplicerade regler.

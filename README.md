@@ -47,7 +47,7 @@ Följande kommandon är planerade. Exakta scripts fastställs i `package.json` n
 | TypeScript | `pnpm typecheck` |
 | Produktionsbuild | `pnpm build` |
 
-Målet är 100 % line-, statement-, function- och branch-täckning av testbar produktionskod. Om 100 % inte är rimligt ska undantag och beslutad nivå dokumenteras.
+Målet är 100 % line-, statement-, function- och branch-täckning av testbar produktionskod. Täckning är ett kvalitetsmål, inte ett skäl att skriva tester utan meningsfulla påståenden. Tester ska verifiera verkligt beteende och får inte mocka centrala delar som testas eller använda framgångsstubbar som alltid ger grönt. Fasta test-fixtures är tillåtna som indata. Om återstående kod saknar meningsfull testmöjlighet ska den och skälet dokumenteras för teamets beslut; sänk inte målet tyst. Se [testinstruktionen](.github/instructions/tests.instructions.md).
 
 ## Bidra
 

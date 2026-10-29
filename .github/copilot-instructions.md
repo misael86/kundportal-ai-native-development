@@ -1,15 +1,14 @@
 # Projektriktlinjer
 
-- Svara kort och tydligt på svenska; föredra punktlistor och undvik upprepningar.
-- Projektet är en lokal Next.js-app med TypeScript och SQLite för lärardemo. Den ska inte publiceras och har ingen inloggning i första versionen.
-- Använd pnpm för installation, scripts och låsfil; skriv inte npm-kommandon i projektguider.
-- Använd endast fiktiva kund- och ärendeuppgifter.
-- Följ feature-driven struktur: featurekod i `src/features/<feature>/`, återanvändbar UI i `src/shared/ui/`, gemensamma baskrav i `src/shared/`.
-- Varje komponent och sida har sin kravspecifikation bredvid koden som `<namn>.spec.md`. Följ [spec-instruktionen](./instructions/component-specs.instructions.md).
-- Håll krav atomära och verifierbara. Krav-ID numreras per komponent och kravtyp (`K`, `D`, `T`, `F`); ID:n får återkomma mellan komponenter.
-- Arbeta testdrivet. Varje krav ska täckas av minst ett automatiserat test; ett test får täcka flera krav. Följ [testinstruktionen](./instructions/tests.instructions.md).
-- Uppfyll WCAG 2.2 AA och responsiv användning på små och stora skärmar. Automatiska kontroller ersätter inte manuell tangentbords- och skärmläsargranskning.
-- SQLite-demodata ska vara fiktiv och seedning idempotent. Tester använder isolerad temporär databas, aldrig lärarens lokala demo-data.
+- Svara kort och tydligt på svenska.
+- Appen är lokal Next.js/TypeScript med SQLite för lärardemo. Ingen publicering eller inloggning i första versionen.
+- Använd bara fiktiva kund- och ärendeuppgifter. Använd pnpm; skriv inte npm-kommandon i guider.
+- Struktur: `src/features/<feature>/` för features, `src/shared/ui/` för UI, `src/shared/` för baskrav.
+- Lägg varje komponents/sidas `<namn>.spec.md` bredvid koden. Följ [spec-instruktionen](./instructions/component-specs.instructions.md). Krav ska vara atomära och verifierbara; ID (`K`, `D`, `T`, `F`) är lokala per komponent/typ och får återkomma i andra komponenter.
+- Arbeta testdrivet. Varje krav ska täckas av minst ett automatiserat test; ett test får täcka flera. Följ [testinstruktionen](./instructions/tests.instructions.md).
+- Följ WCAG 2.2 AA och stöd små/stora skärmar. Automatiska kontroller ersätter inte manuell tangentbords- och skärmläsargranskning.
+- SQLite-demodata ska vara fiktiv och seedning idempotent. Tester använder isolerad temporär databas, aldrig lärarens demo-data.
 - Behåll kursens löpande fork-PR till kursrepot; interna PR:er går till teamets `main`.
-- Veckorapporter ligger i `docs/weekly-status/`; följ [veckostatusinstruktionen](./instructions/weekly-status.instructions.md) och bevara tidigare rapporter.
-- Planera eller specificera utan att implementera när det är vad användaren ber om. Börja inte bygga appen utan uttrycklig begäran om implementation.
+- Spara veckorapporter i `docs/weekly-status/`; följ [veckostatusinstruktionen](./instructions/weekly-status.instructions.md) och bevara historiken.
+- Använd [assignment-intake](./skills/assignment-intake/SKILL.md) för substantiella uppdrag: grilla, få plan och prompt godkända före arbete. Komprimera sedan prompten med [caveman-prompt-compact](./skills/caveman-prompt-compact/SKILL.md).
+- När användaren ber om plan/specifikation, implementera inte. Börja inte bygga appen utan uttrycklig begäran.

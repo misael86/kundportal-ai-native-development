@@ -1,21 +1,23 @@
 ---
-description: "Use when creating or editing automated tests for components, features, APIs, SQLite, or end-to-end flows. Covers requirement IDs, TDD, persistence, seed data, errors, and coverage."
+description: "Använd när du skapar eller ändrar automatiserade tester för komponenter, features, API:er, SQLite eller end-to-end-flöden. Täcker krav-ID, TDD, beständighet, seedning, fel och täckning."
 applyTo: "**/*.{test,spec}.{ts,tsx}"
 ---
 
 # Testinstruktioner
 
-- Skriv eller uppdatera test innan motsvarande implementation (TDD).
-- Placera komponenttester tillsammans med komponenten; feature-, databas- och end-to-end-tester i en tydlig feature- eller testmapp.
-- Referera till varje kravs komponentlokala ID i testnamn eller metadata. Testfilens sökväg ska göra komponent/feature identifierbar för CI.
-- Ett test kan verifiera flera krav. Varje krav från `.spec.md` måste finnas i minst ett automatiserat test.
-- Testa beteenden och observerbara resultat, inte implementationens interna detaljer.
-- Täck relevanta happy paths, felvägar, tomma/laddande lägen, tillåtna värden och gränser (precis på och utanför gränsen).
-- Testa felmeddelanden och att misslyckanden inte ger falsk framgång eller raderar användarens inmatning.
-- Databastester ska använda en separat temporär SQLite-databas per test eller testsvit och städa upp den efteråt.
-- Verifiera SQLite-skapande, läsning, uppdatering, constraints och beständighet efter stängd/återöppnad anslutning.
-- Verifiera att seedning fyller tom databas, är idempotent och inte skriver över ändrade data. Testa även tom databas separat.
-- End-to-end-tester ska täcka centrala lärarflöden, inklusive refresh och beständighet efter omstart där det är möjligt.
-- Tillgänglighetstester ska kontrollera relevanta namn, etiketter, tangentbord, fokus, fel/statusregioner och reducerad rörelse. Komplettera med manuell granskning där automation inte räcker.
-- Sikta på 100 % statements, branches, functions och lines för testbar produktionskod. Dokumentera och motivera varje godkänt undantag; sänk inte gränsen tyst.
-- Följ projektets täckningskommandon när de finns dokumenterade i `README.md`; hitta inte på eller anta scriptnamn.
+- Skriv/uppdatera test före implementation (TDD).
+- Lägg komponenttester bredvid komponenten. Lägg feature-, databas- och E2E-tester i tydlig feature-/testmapp.
+- Ange komponentens krav-ID i testnamn eller metadata. Testsökvägen ska identifiera komponent/feature för CI.
+- Varje `.spec.md`-krav ska förekomma i minst ett automatiserat test; ett test får täcka flera krav.
+- Testa observerbart beteende, inte implementationens detaljer. Varje test ska kunna fallera vid felaktigt beteende.
+- Täck relevanta lyckade flöden, fel, tomt/laddande läge, tillåtna värden och gränsen precis under/vid/över.
+- Verifiera felmeddelanden och att misslyckande inte ger falsk framgång eller raderar användarens indata.
+- Databastest använder och städar separat temporär SQLite per test/svit. Verifiera skapa/läsa/uppdatera, constraints och beständighet efter stängd/öppnad anslutning.
+- Testa seedning på tom databas, idempotens och att ändrade data inte skrivs över. Testa tomt läge separat.
+- E2E täcker centrala lärarflöden, refresh och omstartsbeständighet där möjligt.
+- Tillgänglighetstester täcker relevanta namn, etiketter, tangentbord, fokus, fel/statusregioner och reducerad rörelse. Komplettera manuellt där automation inte räcker.
+- Målet är 100 % statements, branches, functions och lines för testbar produktionskod. Täckning får inte motivera test utan värde.
+- Mocka inte centralt beteende som testas, exempelvis dess datalager eller tjänst. Mocka endast avgränsade externa beroenden eller nödvändig icke-deterministisk indata.
+- Fasta fixtures är tillåtna som indata. Använd inte framgångsstubbar som alltid ger grönt utan att verifiera funktionen.
+- Om 100 % kräver meningslösa test: dokumentera otäckt kod, varför meningsfullt test saknas och föreslagen avvikelse för teamets beslut. Sänk inte målet tyst.
+- Använd README-dokumenterade täckningskommandon; hitta inte på eller anta scripts.
