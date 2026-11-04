@@ -8,9 +8,12 @@
   "scripts": {
     "dev": "concurrently --kill-others-on-fail -n api,web -c yellow,cyan \"npm run dev --workspace @kundportal/api\" \"npm run dev --workspace @kundportal/web\"",
     "build": "npm run build --workspaces --if-present",
-    "test": "npm run test --workspaces --if-present"
+    "test": "npm run test --workspaces --if-present",
+    "test:e2e": "npm run test:e2e:unit && tsc --noEmit -p e2e/tsconfig.json && playwright test",
+    "test:e2e:unit": "node --test e2e/worker-count.test.mjs"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "concurrently": "^9.1.2"
   }
 }

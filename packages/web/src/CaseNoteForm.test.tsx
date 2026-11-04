@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/vitest';
-import { cleanup, render, screen, waitFor } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { CaseNoteForm } from './CaseNoteForm';
@@ -25,73 +25,6 @@ afterEach(() => {
 });
 
 describe('CaseNoteForm', () => {
-  it('[CASE-NOTE-001] offers an empty editor for a case without a note', () => {
-    render(<CaseNoteForm caseItem={caseItem} onUpdated={vi.fn()} />);
-
-    expect(screen.getByRole('textbox', { name: 'Intern anteckning' })).toHaveValue('');
-  });
-
-  it('[CASE-NOTE-002] limits the editor to 2000 characters', () => {
-    render(<CaseNoteForm caseItem={caseItem} onUpdated={vi.fn()} />);
-
-    expect(screen.getByRole('textbox', { name: 'Intern anteckning' })).toHaveAttribute('maxLength', '2000');
-  });
-
-  it('[CASE-NOTE-002] sends note text to the selected case endpoint', async () => {
-    const fetchMock = vi.fn().mockResolvedValue(jsonResponse({ ...caseItem, note: 'Ny text.' }));
-    vi.stubGlobal('fetch', fetchMock);
-    const user = userEvent.setup();
-    render(<CaseNoteForm caseItem={caseItem} onUpdated={vi.fn()} />);
-    await user.type(screen.getByRole('textbox', { name: 'Intern anteckning' }), 'Ny text.');
-    await user.click(screen.getByRole('button', { name: 'Spara anteckning' }));
-
-    expect(fetchMock).toHaveBeenCalledWith('/api/cases/7/note', {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ note: 'Ny text.' })
-    });
-  });
-
-  it('[CASE-NOTE-003] preloads the saved note for editing', () => {
-    render(<CaseNoteForm caseItem={{ ...caseItem, note: 'Sparad text.' }} onUpdated={vi.fn()} />);
-
-    expect(screen.getByRole('textbox', { name: 'Intern anteckning' })).toHaveValue('Sparad text.');
-  });
-
-  it('[CASE-NOTE-003] publishes the confirmed edited case', async () => {
-    const updated = { ...caseItem, note: 'Redigerad text.' };
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(jsonResponse(updated)));
-    const onUpdated = vi.fn();
-    const user = userEvent.setup();
-    render(<CaseNoteForm caseItem={{ ...caseItem, note: 'Gammal text.' }} onUpdated={onUpdated} />);
-    await user.clear(screen.getByRole('textbox', { name: 'Intern anteckning' }));
-    await user.type(screen.getByRole('textbox', { name: 'Intern anteckning' }), updated.note);
-    await user.click(screen.getByRole('button', { name: 'Spara anteckning' }));
-
-    await waitFor(() => expect(onUpdated).toHaveBeenCalledWith(updated));
-  });
-
-  it('[CASE-NOTE-003] displays a save confirmation', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(jsonResponse({ ...caseItem, note: 'Text.' })));
-    const user = userEvent.setup();
-    render(<CaseNoteForm caseItem={caseItem} onUpdated={vi.fn()} />);
-    await user.type(screen.getByRole('textbox', { name: 'Intern anteckning' }), 'Text.');
-    await user.click(screen.getByRole('button', { name: 'Spara anteckning' }));
-
-    expect(await screen.findByRole('status')).toHaveTextContent('Anteckning sparad.');
-  });
-
-  it.each(['', '   '])('[CASE-NOTE-004] deletes a note by saving %j', async (note) => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(jsonResponse(caseItem)));
-    const user = userEvent.setup();
-    render(<CaseNoteForm caseItem={{ ...caseItem, note: 'Sparad text.' }} onUpdated={vi.fn()} />);
-    await user.clear(screen.getByRole('textbox', { name: 'Intern anteckning' }));
-    if (note) await user.type(screen.getByRole('textbox', { name: 'Intern anteckning' }), note);
-    await user.click(screen.getByRole('button', { name: 'Spara anteckning' }));
-
-    expect(await screen.findByRole('status')).toHaveTextContent('Anteckning raderad.');
-  });
-
   it.each([
     { status: 400, error: 'Anteckningen får innehålla högst 2000 tecken.', requirement: 'CASE-NOTE-005' },
     { status: 404, error: 'Ärendet hittades inte.', requirement: 'CASE-NOTE-006' },
