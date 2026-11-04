@@ -6,8 +6,8 @@ Använd detta som arbetsunderlag för kursens G- och VG-kriterier. Det visar vad
 
 | Område | Underlag/status |
 |---|---|
-| Problem, krav och nedbrytning | [Featuretickets](../features/README.md) finns; CASE-CREATE och CASE-LIST är implementerade. Övriga features återstår. |
-| Testning och verifiering | [Verifieringsplan](./verification-plan.md) har resultat för de implementerade flödena. |
+| Problem, krav och nedbrytning | [Featuretickets](../features/README.md) finns; CASE-CREATE, CASE-LIST, CASE-DETAIL, CASE-STATUS och CASE-NOTE är implementerade. UI-CONSISTENCY återstår. |
+| Testning och verifiering | [Verifieringsplan](./verification-plan.md) innehåller kravmatris och faktiska resultat från API-/UI-tester, Playwright och build. |
 | AI-instruktioner och återanvändbart arbetssätt | [Copilot-instruktioner](../../.github/copilot-instructions.md) och tre skills finns. Individuell användning och nytta måste fortfarande beläggas. |
 | Veckovis progression och granskning | Använd [veckostatusmallen](./weekly-status-template.md); registrera faktiska granskningar och resultat. |
 | Individuellt G/VG-underlag | Se [kriteriematrisen](./criteria-matrix.md). Flera kriterier kräver personlig evidens som teamdokumentation inte kan ersätta. |

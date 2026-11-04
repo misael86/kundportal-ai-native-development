@@ -27,6 +27,6 @@ Varje delsteg verifieras och granskas. Vi pausar för godkännande innan nästa 
 | 7 | Ändra status och verifiera beständig uppdatering | Klart — verifierat och godkänt efter granskning |
 | 8 | Lägga till/redigera/radera intern anteckning | Klart — verifierat och godkänt för commit |
 | 9 | Gemensamma UI-komponenter, konsekvent felbesked och visuell kontroll | Återstår |
-| 10 | Playwright-flöden, full krav-test-matris, verifieringsresultat och överlämning | Återstår |
+| 10 | Playwright-flöden, full krav-test-matris, verifieringsresultat och överlämning | Verifierat — E2E 6/6, API 77/77, UI 32/32, build godkänt; UI-CONSISTENCY-004/005 kvarstår i delsteg 9 |
 
 Tester skrivs före implementation inom varje feature. Varje krav-ID ska synas i minst ett testnamn eller testbeskrivning. `uppgift.md` lämnas orörd.

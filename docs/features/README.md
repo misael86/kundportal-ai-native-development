@@ -13,4 +13,8 @@ Ticketen är klar när acceptanskriterierna är uppfyllda, kopplade tester finns
 | CASE-NOTE | Hantera intern anteckning | CASE-DETAIL | [case-note.md](./case-note.md) |
 | UI-CONSISTENCY | Gemensam UI-stil och felbesked | Projektskelett | [ui-consistency.md](./ui-consistency.md) |
 
-Test-ID:n i specifikationerna är planerade. Lägg dem i testnamnen när respektive feature implementeras. Krav som saknar ett existerande och godkänt test innebär att ticketen inte är klar.
+Test-ID:n i specifikationerna ska finnas i testnamn eller beskrivning. Krav som saknar ett existerande och godkänt test innebär att ticketen inte är klar. Aktuell täckning och eventuellt öppna krav finns i verifieringsplanen.
+
+## End-to-end-verifiering
+
+Playwright-flöden i [e2e/portal.spec.ts](../../e2e/portal.spec.ts) kör den verkliga webappen, API:t och en separat SQLite-testdatabas. Återanvändbara selectors och sidåtgärder finns i [CasePortalPage.ts](../../e2e/pages/CasePortalPage.ts). Kravmatris och faktiska resultat finns i [verifieringsplanen](../examination/verification-plan.md). Kör med `npm run test:e2e`; se projektets [README](../../README.md) för första installation av Chromium.

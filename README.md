@@ -20,7 +20,9 @@ npm run dev
 
 Öppna frontend på <http://127.0.0.1:5173>. API:ets anslutningskontroll finns på <http://127.0.0.1:3001/api/health>. Lokal SQLite-fil skapas i `data/kundportal.sqlite`.
 
-Kör automatiserade tester med `npm test` och skapa produktionsbyggen med `npm run build`.
+Kör API- och UI-tester med `npm test`, hela appflöden i Playwright med `npm run test:e2e` och produktionsbyggen med `npm run build`. Playwright kör testerna parallellt med 80 % av Node.js tillgängliga processorer (minst en worker). Varje parallellt test får en egen API-/webbinstans och SQLite-testdatabas; utvecklingsdatabasen används inte. Installera Chromium för Playwright första gången med `npx playwright install chromium`.
+
+GitHub Actions kör tester och produktionsbygge automatiskt för pull requests via [CI-workflowen](./.github/workflows/ci.yml).
 
 ## MVP-specifikationer
 

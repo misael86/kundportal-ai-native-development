@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/vitest';
-import { act, cleanup, render, screen, within } from '@testing-library/react';
+import { act, cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { CaseDetail } from './CaseDetail';
@@ -51,29 +51,6 @@ describe('CaseDetail', () => {
     expect(screen.getByText('Status', { selector: 'dt' }).nextElementSibling).toHaveTextContent('Avslutat');
   });
 
-  it('[CASE-NOTE-003] reads the saved note after reopening the detail view', async () => {
-    let stored = { ...caseItem, note: 'Första anteckningen.' };
-    vi.stubGlobal('fetch', vi.fn().mockImplementation((_url: string, options?: RequestInit) => {
-      if (options?.method === 'PATCH') {
-        stored = { ...stored, note: 'Redigerad anteckning.' };
-      }
-      return Promise.resolve(jsonResponse(stored));
-    }));
-    const user = userEvent.setup();
-    const { unmount } = render(<CaseDetail caseId={7} />);
-    const editor = await screen.findByRole('textbox', { name: 'Intern anteckning' });
-    await user.clear(editor);
-    await user.type(editor, 'Redigerad anteckning.');
-    await user.click(screen.getByRole('button', { name: 'Spara anteckning' }));
-    await screen.findByText('Anteckning sparad.');
-    unmount();
-
-    render(<CaseDetail caseId={7} />);
-
-    expect(await screen.findByRole('textbox', { name: 'Intern anteckning' }))
-      .toHaveValue('Redigerad anteckning.');
-  });
-
   it('[CASE-NOTE-003] preserves an unsaved note draft when status is saved', async () => {
     vi.stubGlobal('fetch', vi.fn()
       .mockResolvedValueOnce(jsonResponse(caseItem))
@@ -103,57 +80,6 @@ describe('CaseDetail', () => {
 
     const term = screen.getByText('Status', { selector: 'dt' });
     expect(term.nextElementSibling).toHaveTextContent('Pågående');
-  });
-
-  it('[CASE-STATUS-003] displays the status saved from the detail view', async () => {
-    vi.stubGlobal(
-      'fetch',
-      vi.fn()
-        .mockResolvedValueOnce(jsonResponse(caseItem))
-        .mockResolvedValueOnce(jsonResponse({ ...caseItem, status: 'Avslutat' }))
-    );
-    const user = userEvent.setup();
-    render(<CaseDetail caseId={7} />);
-    await user.selectOptions(await screen.findByRole('combobox', { name: 'Ändra status' }), 'Avslutat');
-    await user.click(screen.getByRole('button', { name: 'Spara status' }));
-    await screen.findByText('Status sparad.');
-
-    const term = screen.getByText('Status', { selector: 'dt' });
-    expect(term.nextElementSibling).toHaveTextContent('Avslutat');
-  });
-
-  it('[CASE-DETAIL-001] fetches the selected case from the detail endpoint', async () => {
-    const fetchMock = vi.fn().mockResolvedValue(jsonResponse(caseItem));
-    vi.stubGlobal('fetch', fetchMock);
-
-    render(<CaseDetail caseId={7} />);
-    await screen.findByRole('heading', { name: caseItem.title });
-
-    expect(fetchMock).toHaveBeenCalledWith('/api/cases/7');
-  });
-
-  it('[CASE-DETAIL-001] displays the selected title', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(jsonResponse(caseItem)));
-
-    render(<CaseDetail caseId={7} />);
-
-    expect(await screen.findByRole('heading', { name: caseItem.title })).toBeInTheDocument();
-  });
-
-  it.each([
-    ['Beskrivning', 'Hela beskrivningen. Med en andra rad.'],
-    ['Kategori', 'Fakturering'],
-    ['Prioritet', 'Hög'],
-    ['Status', 'Pågående'],
-    ['Skapad', new Date(caseItem.createdAt).toLocaleString('sv-SE')]
-  ])('[CASE-DETAIL-001] displays %s for the selected case', async (label, value) => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(jsonResponse(caseItem)));
-
-    render(<CaseDetail caseId={7} />);
-    const detail = await screen.findByRole('region', { name: caseItem.title });
-    const term = within(detail).getByText(label, { selector: 'dt' });
-
-    expect(term.nextElementSibling).toHaveTextContent(value);
   });
 
   it('[CASE-DETAIL-001] announces loading while fetching details', () => {
